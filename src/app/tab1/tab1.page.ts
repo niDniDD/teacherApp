@@ -5,4 +5,12 @@ import { Component } from '@angular/core';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {}
+export class Tab1Page {
+  profile = {
+    img:{url:'https://www.maerakluke.com/wp-content/uploads/2014/05/35222.jpg'},
+    name:'ด.ช.เอก',
+    lastname:'เมืองลพ'
+  }
+}
+
+
