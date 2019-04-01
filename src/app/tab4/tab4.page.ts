@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab4',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab4Page implements OnInit {
 
-  constructor() { }
+  constructor(
+    public route: NavController
+  ) { }
 
   ngOnInit() {
   }
-
+  go() {
+    this.route.navigateForward('/nid');
+  }
 }
