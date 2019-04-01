@@ -1,9 +1,46 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab one
+      รายชื่อนักเรียน
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+
+  <!-- List of Text Items -->
+  
+      
+  <ion-row>
+      <ion-searchbar></ion-searchbar>
+  </ion-row>
+  <ion-list>
+      <ion-item>
+  <ion-label>อนุบาล {{Leval.class}}/{{Leval.room}}</ion-label>
+      </ion-item>
+  
+  
+    <ion-item *ngFor="let item of Liststudent"> 
+      <ion-row> 
+        <ion-col size="4"  >
+            <ion-avatar item-start>
+                <img width="30" [src]="item.image">
+              </ion-avatar>
+          
+    </ion-col>
+    <ion-col size="8" >
+      <p>
+          {{item.name}} {{item.lastname}}
+      </p>
+      
+    </ion-col>
+  </ion-row>
+  </ion-item>
+  
+  </ion-list>
+  
+  
+  
+  
+  
+  </ion-content>
