@@ -1,71 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      รายชื่อนักเรียน
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
-  <ion-header>
-    <ion-toolbar>
-      <ion-row>
-        <ion-col size=1>
-          <ion-icon name="close-circle" size="large"> </ion-icon>
-        </ion-col>
-        <ion-col size=9>
-          <ion-title style="text-align:center">
-            โปรไฟล์
-          </ion-title>
-        </ion-col>
-        <ion-col size=1>
-          <ion-icon name="star-outline" size="large"></ion-icon>
-        </ion-col>
-        <ion-col size=1>
-          <ion-icon name="more" size="large"></ion-icon>
-        </ion-col>
-      </ion-row>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
 
-  <ion-content>
-
-
-    <ion-row size=12 class="center2">
-      <ion-avatar item-start>
-        <img width="200" [src]="profile.img.url">
-      </ion-avatar>
-    </ion-row>
-
-    <ion-row size=12 class="center2">
-      <h6>ด.ช.เอก เมืองลพ</h6>
-    </ion-row>
-
-
-
-   
-       
-        
-
-
-     
-
+  <!-- List of Text Items -->
+  
+      
+  <ion-row>
+      <ion-searchbar></ion-searchbar>
+  </ion-row>
+  <ion-list>
+      <ion-item>
+  <ion-label>อนุบาล {{Leval.class}}/{{Leval.room}}</ion-label>
+      </ion-item>
+  
+  
+    <ion-item *ngFor="let item of Liststudent"> 
+      <ion-row> 
+        <ion-col size="4"  >
+            <ion-avatar item-start>
+                <img width="30" [src]="item.image">
+              </ion-avatar>
+          
+    </ion-col>
+    <ion-col size="8" >
+      <p>
+          {{item.name}} {{item.lastname}}
+      </p>
+      
+    </ion-col>
+  </ion-row>
+  </ion-item>
+  
+  </ion-list>
+  
+  
+  
+  
+  
   </ion-content>
-
-  <ion-footer>
-      <ion-toolbar>
-          <ion-row>
-              <ion-col size=6>
-                ผลการเรียน
-              </ion-col>
-              <ion-col size=6>
-                พัฒนาการ
-              </ion-col>
-            </ion-row>
-      </ion-toolbar>
-    </ion-footer>
-    <ion-footer>
-        <ion-toolbar>
-            <ion-row>
-                <ion-col size=6>
-                  ผลงาน
-                </ion-col>
-                <ion-col size=6>
-                  น้ำหนัก-ส่วนสูง
-                </ion-col>
-              </ion-row>
-           
-        </ion-toolbar>
-      </ion-footer>

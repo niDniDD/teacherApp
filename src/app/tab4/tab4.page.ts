@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -15,7 +14,12 @@ export class Tab4Page implements OnInit {
 
   ngOnInit() {
   }
-  go() {
-    this.route.navigateForward('/nid');
+
+  goProfile() {
+    this.route.navigateForward('/profile');
+  }
+
+  goProtfolio() {
+    this.route.navigateForward('/protfolio')
   }
 }
