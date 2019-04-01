@@ -1,9 +1,46 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab Three
+    <ion-title class="title">
+      <ion-row>
+        <ion-col size=1>
+            <ion-icon name="arrow-back" ios="ios-arrow" size="large"></ion-icon>
+        </ion-col>
+        <ion-col size=10>
+          ผลงาน
+        </ion-col>
+        <ion-col size=1>
+            <ion-icon name="more" size="large" ></ion-icon>
+        </ion-col>
+      </ion-row>
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+
+  <ion-card *ngFor="let item of portfolio">
+    <ion-grid>
+      <ion-row>
+
+        <ion-col size=5>
+          <ion-slides pager="true">
+              <ion-slide *ngFor="let itm of item.image">
+                  <img class="img-style"  [src]="itm.url">
+              </ion-slide>
+            </ion-slides>
+
+        </ion-col>
+        <ion-col size=7>
+          <ion-card-header class="crad">
+            <ion-card-title >{{item.title}} </ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content >{{item.detail}}</ion-card-content>
+          <div text-left class="text1">{{item.date}}</div>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+<<<<<<< HEAD
   Leval = 
     {class : "1",
     room : "1",
@@ -43,3 +44,13 @@ Liststudent = [
 
   ];
 }
+=======
+  profile = {
+    img:{url:'https://www.maerakluke.com/wp-content/uploads/2014/05/35222.jpg'},
+    name:'ด.ช.เอก',
+    lastname:'เมืองลพ'
+  }
+}
+
+
+>>>>>>> 5d1cece778e5561aab05969408c720e4858f3eea
