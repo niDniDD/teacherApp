@@ -14,9 +14,15 @@ export class Tab4Page implements OnInit {
 
   ngOnInit() {
   }
+<<<<<<< HEAD
 
   goProfile() {
     this.route.navigateForward('/profile');
   }
 
+=======
+  goProtfolio() {
+    this.route.navigateForward('/protfolio')
+  }
+>>>>>>> f792b42c76e12260adef7acb828b54a6d3dacf4f
 }
