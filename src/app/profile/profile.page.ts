@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -8,18 +9,21 @@ import { NavController } from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
 
-  profile = {
-    img:{url:'https://www.maerakluke.com/wp-content/uploads/2014/05/35222.jpg'},
-    name:'ด.ช.เอก',
-    lastname:'เมืองลพ'
-  }
+  data: any;
+
   constructor(
-    public route: NavController
+    public route: NavController,
+    public act: ActivatedRoute
   ) { }
 
   ngOnInit() {
+
+    let res: any = this.act.snapshot.paramMap.get('sss');
+    this.data = JSON.parse(res)
+
+    console.log(this.data)
   }
   backtab4() {
-    this.route.navigateForward('/tab4');
+    this.route.navigateBack('/tabs/tab1');
   }
 }
