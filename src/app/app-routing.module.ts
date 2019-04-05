@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'tab4', loadChildren: './tab4/tab4.module#Tab4PageModule' },
   { path: 'protfolio', loadChildren: './protfolio/protfolio.module#ProtfolioPageModule' },
   { path: 'evo', loadChildren: './evo/evo.module#EvoPageModule' },
-  { path: 'score', loadChildren: './score/score.module#ScorePageModule' }
+  { path: 'score', loadChildren: './score/score.module#ScorePageModule' },  { path: 'edit-profile', loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule' }
+
 
 
 ];

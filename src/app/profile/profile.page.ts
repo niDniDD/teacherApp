@@ -35,5 +35,7 @@ export class ProfilePage implements OnInit {
   evo() {
     this.route.navigateForward('/evo')
   }
-  
+  editprofile() {
+    this.route.navigateForward('/edit-profile')
+  }
 }

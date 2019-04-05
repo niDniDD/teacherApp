@@ -3,11 +3,11 @@ import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-evo',
-  templateUrl: './evo.page.html',
-  styleUrls: ['./evo.page.scss'],
+  selector: 'app-edit-profile',
+  templateUrl: './edit-profile.page.html',
+  styleUrls: ['./edit-profile.page.scss'],
 })
-export class EvoPage implements OnInit {
+export class EditProfilePage implements OnInit {
 
   constructor(
     public route: NavController,
@@ -15,9 +15,8 @@ export class EvoPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    
   }
-  goBack() {
+  back() {
     this.route.navigateBack('/profile')
   }
 }
