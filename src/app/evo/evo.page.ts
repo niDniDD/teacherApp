@@ -18,6 +18,6 @@ export class EvoPage implements OnInit {
     
   }
   goBack() {
-    window.history.back();
+    this.route.navigateBack('/profile')
   }
 }
