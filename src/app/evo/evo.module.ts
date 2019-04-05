@@ -12,15 +12,7 @@ const routes: Routes = [
     path: '',
     component: EvoPage
   },
-  {
-    path: 'evo',
-    children: [
-      {
-        path: '',
-        loadChildren: '../evo/evo.module#EvoPageModule'
-      }
-    ]
-  },
+  
 ];
 
 @NgModule({
