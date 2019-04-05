@@ -41,70 +41,16 @@
 </ion-row>        
 </ion-item>
 
-
-  
-          <ion-item>
-            <ion-label floating >สถานะ :</ion-label>
-            <ion-input type="text" ></ion-input>
-          
-          </ion-item>
-          
-          
-
-         <ion-item>
-            <ion-label floating >ชื่อ :</ion-label>
-            <ion-input type="text" ></ion-input>
-          
-          </ion-item>
-          
-           
-
-          <ion-item>
-              <ion-label floating >นามสกุล :</ion-label>
-              <ion-input type="text" ></ion-input>
-            
-            </ion-item>
-          
-          
-
-            <ion-item>
-                <ion-label floating >ที่อยู่ :</ion-label>
-                <ion-input type="text" ></ion-input>
-              
-              </ion-item>
-       
-          
-
-              <ion-item>
-                  <ion-label floating >เลขบัตรประชาชน :</ion-label>
-                  <ion-input type="number" ></ion-input>
-                
-                </ion-item>
-
-                <ion-item>
-                    <ion-label floating >เชื้อชาติ :</ion-label>
-                    <ion-input type="text" ></ion-input>
-                  
-                  </ion-item>
-
-                <ion-item>
-                    <ion-label floating >ศาสนา :</ion-label>
-                    <ion-input type="text" ></ion-input>
-                  
-                  </ion-item>
-          
-                <ion-item>
-                    <ion-label floating >กรุ๊ปเลือด :</ion-label>
-                    <ion-input type="text" ></ion-input>
-                  
-                  </ion-item> 
-
-
-                <ion-item>
-                    <ion-label floating >ที่อยู่ :</ion-label>
-                    <ion-input type="text" ></ion-input>
-                  
-                  </ion-item>
-         
-
+<ion-row *ngFor="let item of Status">
+  <div class = "col1"><ion-col >
+  </ion-col></div>
+  <div class = "Col2">
+    <ion-col >
+      <ion-label floating >{{item.name}}</ion-label>
+    </ion-col>
+  </div>
+  <ion-col class = "Col3">
+    <ion-item><ion-input type="text" ></ion-input></ion-item>
+  </ion-col>
+</ion-row>
 </ion-content>
