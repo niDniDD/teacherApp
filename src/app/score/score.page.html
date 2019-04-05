@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar >
+    <ion-row>
+      <ion-col >
+        <ion-icon name="close-circle" size="large"></ion-icon>
+      </ion-col>
+      <ion-col class= "header1">
+        <ion-title>คะแนน</ion-title>
+      </ion-col>
+      <ion-col class= "header2">
+        <ion-icon name="checkmark" size="large"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>  
+</ion-header>
+
+<ion-content>
+<ion-card *ngFor="let item of Score">
+  <ion-card-header>
+    {{item.name}}
+  </ion-card-header>
+  <ion-row class= "content">
+    <ion-col>
+      เต็ม<br><br>100
+    </ion-col>
+    <ion-col>
+      คะแนน<br>
+      <ion-item class = "input"><ion-input type="number" ></ion-input></ion-item>
+    </ion-col>
+  </ion-row>
+</ion-card>
+</ion-content>
