@@ -26,4 +26,14 @@ export class ProfilePage implements OnInit {
   backtab4() {
     this.route.navigateBack('/tabs/tab1');
   }
+  score(){
+    this.route.navigateBack('/score');
+  }
+  goProtfolio() {
+    this.route.navigateForward('/protfolio')
+  }
+  evo() {
+    this.route.navigateForward('/evo')
+  }
+  
 }
