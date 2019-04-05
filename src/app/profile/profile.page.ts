@@ -29,4 +29,8 @@ export class ProfilePage implements OnInit {
   score(){
     this.route.navigateBack('/score');
   }
+  goProtfolio() {
+    this.route.navigateForward('/protfolio')
+  }
+  
 }

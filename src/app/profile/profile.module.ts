@@ -11,7 +11,16 @@ const routes: Routes = [
   {
     path: '',
     component: ProfilePage
-  }
+  },
+  {
+    path: 'evo',
+    children: [
+      {
+        path: '',
+        loadChildren: '../evo/evo.module#EvoPageModule'
+      }
+    ]
+  },
 ];
 
 @NgModule({

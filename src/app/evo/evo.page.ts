@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-evo',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EvoPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public route: NavController,
+    public act: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    
   }
-
+  goBack() {
+    window.history.back();
+  }
 }
