@@ -32,5 +32,8 @@ export class ProfilePage implements OnInit {
   goProtfolio() {
     this.route.navigateForward('/protfolio')
   }
+  evo() {
+    this.route.navigateForward('/evo')
+  }
   
 }
