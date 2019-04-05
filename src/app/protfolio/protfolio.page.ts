@@ -52,7 +52,7 @@ export class ProtfolioPage implements OnInit {
 
   ngOnInit() {
   }
-  backtab4() {
-    this.route.navigateForward('/tab4')
+  back() {
+    this.route.navigateBack('/profile')
   }
 }
