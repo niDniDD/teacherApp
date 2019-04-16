@@ -38,4 +38,8 @@ export class ProfilePage implements OnInit {
   editprofile() {
     this.route.navigateForward('/edit-profile')
   }
+  profilesave(){
+    this.route.navigateForward('/profile-save')
+  }
+ 
 }
