@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -11,13 +11,14 @@ export class EvoPage implements OnInit {
 
   constructor(
     public route: NavController,
-    public act: ActivatedRoute
+    public act: ActivatedRoute,
+    public modalcontroller:ModalController
   ) { }
 
   ngOnInit() {
     
   }
   goBack() {
-    this.route.navigateBack('/profile')
+    this.modalcontroller.dismiss();
   }
 }

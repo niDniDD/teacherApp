@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { ScorePage } from '../score/score.page';
+import { EvoPage } from '../evo/evo.page';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +15,8 @@ export class ProfilePage implements OnInit {
 
   constructor(
     public route: NavController,
-    public act: ActivatedRoute
+    public act: ActivatedRoute,
+    public modalcontroller:ModalController
   ) { }
 
   ngOnInit() {
@@ -26,14 +29,26 @@ export class ProfilePage implements OnInit {
   backtab4() {
     this.route.navigateBack('/tabs/tab1');
   }
-  score(){
-    this.route.navigateBack('/score');
+  async score() {
+    const modal = await this.modalcontroller.create({
+    component: ScorePage,
+    componentProps: { value: 123 }
+    });
+  
+    return await modal.present();
+  
   }
   goProtfolio() {
     this.route.navigateForward('/protfolio')
   }
-  evo() {
-    this.route.navigateForward('/evo')
+  async evo() {
+    const modal = await this.modalcontroller.create({
+    component: EvoPage,
+    componentProps: { value: 123 }
+    });
+  
+    return await modal.present();
+  
   }
   editprofile() {
     this.route.navigateForward('/edit-profile')
