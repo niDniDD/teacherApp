@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { ModalController} from '@ionic/angular';
 @Component({
   selector: 'app-profile-save',
   templateUrl: './profile-save.page.html',
@@ -10,13 +11,14 @@ export class ProfileSavePage implements OnInit {
 
   constructor(
     public route: NavController,
-    public act: ActivatedRoute
+    public act: ActivatedRoute,
+    public ModalController: ModalController
   ) { }
 
   ngOnInit() {
   }
 
   profile(){
-    this.route.navigateForward('/profile')
+    this.ModalController.dismiss();
   }
 }

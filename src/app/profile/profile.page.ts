@@ -6,6 +6,9 @@ import { ActivatedRoute } from '@angular/router';
 import { ScorePage } from '../score/score.page';
 import { EvoPage } from '../evo/evo.page';
 
+import { ProfileSavePage } from '../profile-save/profile-save.page';
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -18,7 +21,7 @@ export class ProfilePage implements OnInit {
   constructor(
     public route: NavController,
     public act: ActivatedRoute,
-    public modalcontroller:ModalController
+    public modalcontroller: ModalController
   ) { }
 
   ngOnInit() {
@@ -33,14 +36,14 @@ export class ProfilePage implements OnInit {
   }
   async score() {
     const modal = await this.modalcontroller.create({
-    component: ScorePage,
-    componentProps: { 
-      data: this.data
-     }
+      component: ScorePage,
+      componentProps: {
+        data: this.data
+      }
     });
-  
+
     return await modal.present();
-  
+
   }
   async goProtfolio() {
     const modal = await this.modalcontroller.create({
@@ -53,20 +56,26 @@ export class ProfilePage implements OnInit {
   }
   async evo() {
     const modal = await this.modalcontroller.create({
-    component: EvoPage,
-    componentProps: { 
-      data: this.data
-     }
+      component: EvoPage,
+      componentProps: {
+        data: this.data
+      }
     });
-  
+
     return await modal.present();
-  
+
   }
   editprofile() {
     this.route.navigateForward('/edit-profile')
   }
-  profilesave(){
-    this.route.navigateForward('/profile-save')
+  async profilesave() {
+    const modal = await this.modalcontroller.create({
+      component: ProfileSavePage,
+      componentProps: {
+        data: this.data
+      }
+    });
+    return await modal.present();
   }
- 
+
 }

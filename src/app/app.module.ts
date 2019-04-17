@@ -13,13 +13,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScorePageModule } from './score/score.module';
 import { EvoPageModule } from './evo/evo.module';
+import { ProfileSavePageModule } from './profile-save/profile-save.module';
 
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule],
 
   providers: [
     StatusBar,
