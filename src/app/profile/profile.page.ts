@@ -34,7 +34,9 @@ export class ProfilePage implements OnInit {
   async score() {
     const modal = await this.modalcontroller.create({
     component: ScorePage,
-    componentProps: { value: 123 }
+    componentProps: { 
+      data: this.data
+     }
     });
   
     return await modal.present();
@@ -52,7 +54,9 @@ export class ProfilePage implements OnInit {
   async evo() {
     const modal = await this.modalcontroller.create({
     component: EvoPage,
-    componentProps: { value: 123 }
+    componentProps: { 
+      data: this.data
+     }
     });
   
     return await modal.present();

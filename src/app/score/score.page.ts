@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,7 @@ import { NavController, ModalController } from '@ionic/angular';
   styleUrls: ['./score.page.scss'],
 })
 export class ScorePage implements OnInit {
+  @Input() data: any;
 
   Score = [{name:'ภาษาไทย'},{name:'ภาษาอังกฤษ'},{name:'คณิตศาสตร์'}]
   constructor(

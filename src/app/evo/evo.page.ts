@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./evo.page.scss'],
 })
 export class EvoPage implements OnInit {
-
+data: any;
   constructor(
     public route: NavController,
     public act: ActivatedRoute,
