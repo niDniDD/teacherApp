@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
-import { StudentService } from '../service/student.service';
+import { StudentService } from '../services/student.service';
 
 @Component({
   selector: 'app-tab1',
