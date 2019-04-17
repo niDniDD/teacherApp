@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController,ModalController  } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { ProtfolioPage } from '../protfolio/protfolio.page';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +14,8 @@ export class ProfilePage implements OnInit {
 
   constructor(
     public route: NavController,
-    public act: ActivatedRoute
+    public act: ActivatedRoute,
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -29,8 +31,14 @@ export class ProfilePage implements OnInit {
   score(){
     this.route.navigateBack('/score');
   }
-  goProtfolio() {
-    this.route.navigateForward('/protfolio')
+  async goProtfolio() {
+    const modal = await this.modalController.create({
+      component: ProtfolioPage,
+      componentProps: {
+        data: this.data
+      }
+    });
+    return await modal.present();
   }
   evo() {
     this.route.navigateForward('/evo')
