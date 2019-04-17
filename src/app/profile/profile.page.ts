@@ -5,6 +5,7 @@ import { NavController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ScorePage } from '../score/score.page';
 import { EvoPage } from '../evo/evo.page';
+import { EditProfilePage } from '../edit-profile/edit-profile.page';
 
 @Component({
   selector: 'app-profile',
@@ -62,8 +63,16 @@ export class ProfilePage implements OnInit {
     return await modal.present();
   
   }
-  editprofile() {
-    this.route.navigateForward('/edit-profile')
+  async editprofile() {
+    const modal = await this.modalcontroller.create({
+      component: EditProfilePage,
+      componentProps: { 
+        data: this.data
+       }
+      });
+    
+      return await modal.present();
+    
   }
   profilesave(){
     this.route.navigateForward('/profile-save')
