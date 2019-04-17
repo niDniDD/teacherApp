@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-score',
@@ -9,13 +9,16 @@ import { NavController } from '@ionic/angular';
 export class ScorePage implements OnInit {
 
   Score = [{name:'ภาษาไทย'},{name:'ภาษาอังกฤษ'},{name:'คณิตศาสตร์'}]
-  constructor(public route: NavController) { }
+  constructor(
+    public route: NavController,
+    public modalcontroller:ModalController
+    ) { }
 
   ngOnInit() {
   }
 
   backProfile() {
-    this.route.navigateBack('/profile')
+    this.modalcontroller.dismiss();
+  }
   }
 
-}

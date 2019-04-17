@@ -11,12 +11,19 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { StudentService } from './service/student.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ScorePageModule } from './score/score.module';
+import { EvoPageModule } from './evo/evo.module';
+import { ProfilePageModule } from './profile/profile.module';
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
+<<<<<<< HEAD
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule],
+=======
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ScorePageModule,EvoPageModule,ProfilePageModule],
+>>>>>>> 6256c2e4d86665e2cac39c03abda5cc87cb6c244
   providers: [
     StatusBar,
     SplashScreen,
