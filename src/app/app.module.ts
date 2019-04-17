@@ -8,19 +8,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { StudentService } from './service/student.service';
+import { StudentService } from './services/student.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ScorePageModule } from './score/score.module';
 import { EvoPageModule } from './evo/evo.module';
 import { ProfileSavePageModule } from './profile-save/profile-save.module';
+import { EditProfilePageModule } from './edit-profile/edit-profile.module';
 
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule,EditProfilePageModule],
+
 
   providers: [
     StatusBar,
