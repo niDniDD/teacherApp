@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-import { NavController,ModalController  } from '@ionic/angular';
-import { ActivatedRoute } from '@angular/router';
+
 import { ProtfolioPage } from '../protfolio/protfolio.page';
-=======
 import { NavController, ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ScorePage } from '../score/score.page';
 import { EvoPage } from '../evo/evo.page';
->>>>>>> 6256c2e4d86665e2cac39c03abda5cc87cb6c244
 
 @Component({
   selector: 'app-profile',
@@ -22,11 +18,7 @@ export class ProfilePage implements OnInit {
   constructor(
     public route: NavController,
     public act: ActivatedRoute,
-<<<<<<< HEAD
-    public modalController: ModalController
-=======
     public modalcontroller:ModalController
->>>>>>> 6256c2e4d86665e2cac39c03abda5cc87cb6c244
   ) { }
 
   ngOnInit() {
@@ -49,7 +41,7 @@ export class ProfilePage implements OnInit {
   
   }
   async goProtfolio() {
-    const modal = await this.modalController.create({
+    const modal = await this.modalcontroller.create({
       component: ProtfolioPage,
       componentProps: {
         data: this.data
