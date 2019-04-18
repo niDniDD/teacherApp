@@ -1,3 +1,4 @@
+import { PortfolioSavePageModule } from './portfolio-save/portfolio-save.module';
 import { ProfilePageModule } from './profile/profile.module';
 import { ProtfolioPageModule } from './protfolio/protfolio.module';
 
@@ -21,7 +22,7 @@ import { EditProfilePageModule } from './edit-profile/edit-profile.module';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule,EditProfilePageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule,EditProfilePageModule,PortfolioSavePageModule],
 
 
   providers: [

@@ -1,3 +1,4 @@
+import { PortfolioSavePage } from './../portfolio-save/portfolio-save.page';
 import { Component, OnInit } from '@angular/core';
 import { NavController, ModalController  } from '@ionic/angular';
 
@@ -7,7 +8,7 @@ import { NavController, ModalController  } from '@ionic/angular';
   styleUrls: ['./protfolio.page.scss'],
 })
 export class ProtfolioPage implements OnInit {
-
+data: any
 
 portfolio = [
   {
@@ -46,14 +47,23 @@ portfolio = [
 ]
   constructor(
     public route: NavController,
-    public modalController: ModalController
+    public modalcontroller: ModalController
   ) { }
 
   ngOnInit() {
-
+    console.log(this.data)
   }
   
   back() {
-    this.modalController.dismiss();
+    this.modalcontroller.dismiss();
+  }
+  async addPort() {
+    const modal = await this.modalcontroller.create({
+      component: PortfolioSavePage ,
+      componentProps: {
+        data: this.data
+      }
+    });
+    return await modal.present();
   }
 }
