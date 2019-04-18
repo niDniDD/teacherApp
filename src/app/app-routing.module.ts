@@ -9,7 +9,8 @@ const routes: Routes = [
   { path: 'evo', loadChildren: './evo/evo.module#EvoPageModule' },
   { path: 'score', loadChildren: './score/score.module#ScorePageModule' },
   { path: 'edit-profile', loadChildren: './edit-profile/edit-profile.module#EditProfilePageModule' },
-  { path: 'profile-save', loadChildren: './profile-save/profile-save.module#ProfileSavePageModule' }
+  { path: 'profile-save', loadChildren: './profile-save/profile-save.module#ProfileSavePageModule' },  { path: 'portfolio-save', loadChildren: './portfolio-save/portfolio-save.module#PortfolioSavePageModule' }
+
 
 
 
