@@ -11,18 +11,18 @@
         <ion-icon name="checkmark-circle" size="large"></ion-icon>
       </ion-col>
     </ion-row>
-  </ion-toolbar>  
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-card *ngFor="let item of Score">
+<ion-card *ngFor="let item of score">
   <ion-card-header>
-    {{item.name}}
+    {{item.subjects}}
   </ion-card-header>
   <ion-row class= "content">
     <ion-col>
-      เต็ม<br><br>100
-    </ion-col>
+      เต็ม<br><br>{{item.fullscore}}
+    </ion-col> 
     <ion-col>
       คะแนน<br>
       <ion-item class = "input"><ion-input type="number" ></ion-input></ion-item>

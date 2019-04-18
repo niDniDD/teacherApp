@@ -1,18 +1,18 @@
 [
     {
         "subjects" : "คณิตศาสตร์",
-        "full score" : "100"
+        "fullscore" : "100"
     },
     {
         "subjects" : "อังกฤษ",
-        "full score" : "100"
+        "fullscore" : "100"
     },
     {
         "subjects" : "ภาษาไทน",
-        "full score" : "100"
+        "fullscore" : "100"
     },
     {
         "subjects" : "วิทยาศาสตร์",
-        "full score" : "100"
+        "fullscore" : "100"
     }
 ]

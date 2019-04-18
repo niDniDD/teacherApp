@@ -15,6 +15,7 @@ import { ScorePageModule } from './score/score.module';
 import { EvoPageModule } from './evo/evo.module';
 import { ProfileSavePageModule } from './profile-save/profile-save.module';
 import { EditProfilePageModule } from './edit-profile/edit-profile.module';
+import { ScoreService } from './services/score/score.service';
 
 
 
@@ -28,7 +29,8 @@ import { EditProfilePageModule } from './edit-profile/edit-profile.module';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    StudentService
+    StudentService,
+    ScoreService
   ],
   bootstrap: [AppComponent]
 })
