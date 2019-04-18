@@ -1,3 +1,4 @@
+import { PortfolioSavePageModule } from './portfolio-save/portfolio-save.module';
 import { ProfilePageModule } from './profile/profile.module';
 import { ProtfolioPageModule } from './protfolio/protfolio.module';
 
@@ -16,13 +17,15 @@ import { EvoPageModule } from './evo/evo.module';
 import { ProfileSavePageModule } from './profile-save/profile-save.module';
 import { EditProfilePageModule } from './edit-profile/edit-profile.module';
 import { ScoreService } from './services/score/score.service';
+import { EvoserviceService } from './services/evoservice/evoservice.service';
+import { PortfolioService } from './services/portfolio/portfolio.service';
 
 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule,EditProfilePageModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule,EditProfilePageModule,PortfolioSavePageModule],
 
 
   providers: [
@@ -30,7 +33,7 @@ import { ScoreService } from './services/score/score.service';
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     StudentService,
-    ScoreService
+    ScoreService,EvoserviceService,PortfolioService
   ],
   bootstrap: [AppComponent]
 })
