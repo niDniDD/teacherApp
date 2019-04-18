@@ -6,7 +6,7 @@
           </ion-col>
           <ion-col size=9>
             <ion-title style="text-align:center" >
-              โปรไฟล์
+              บันทึกน้ำหนัก-ส่วนสูง
             </ion-title>
           </ion-col>         
           <ion-col size=1>
@@ -18,23 +18,58 @@
 
 <ion-content>
   
-  
+<ion-row >
+  <ion-col class="Datacol1">
+    <ion-label class="date">วันที่</ion-label>
+  </ion-col>
+  <ion-col class="Datacol2">
+    <ion-datetime displayFormat="DD MM YY" placeholder="เลือกวันที่" checkmark="" ></ion-datetime>
+  </ion-col>
+  <ion-col class="Datacol3">
+    <ion-label class="unit">วัน/เดือน/ปี</ion-label>
+  </ion-col>
+</ion-row>
+<ion-row >
+  <ion-col class="Datacol1">
+    <ion-label class="weight">น้ำหนัก</ion-label>
+  </ion-col>
+  <ion-col class="Datacol2">
+    <ion-item><ion-input class="input" type="number" value="number"></ion-input></ion-item>
+  </ion-col>
+  <ion-col class="Datacol3">
+    <ion-label class="unit">กิโลกรัม</ion-label>
+  </ion-col>
+</ion-row>
+<ion-row >
+  <ion-col class="Datacol1">
+    <ion-label class="height">ส่วนสูง</ion-label>
+  </ion-col>
+  <ion-col class="Datacol2">
+    <ion-item><ion-input class="input" type="number" value="number"></ion-input></ion-item>
+  </ion-col>
+  <ion-col class="Datacol3">
+    <ion-label class="unit">เซนติเมตร</ion-label>
+  </ion-col>
+</ion-row>
+
+
+  <!--
   <ion-item>
       
-    <ion-label>&nbsp; &nbsp;  &nbsp; &nbsp; วันที่</ion-label>
+    <ion-label class="date">วันที่</ion-label>
     
-    <ion-datetime displayFormat="DD MM YY" checkmark="" ></ion-datetime>
+    <ion-datetime class="datetime" displayFormat="DD MM YY" checkmark="" ></ion-datetime>
     
   </ion-item>
   <ion-item>
-    <ion-label >&nbsp; &nbsp;  &nbsp; &nbsp; น้ำหนัก</ion-label>
+    <ion-label class="weight">น้ำหนัก</ion-label>
     <ion-input type="number" value="number"></ion-input>
     <ion-label >กิโลกรัม</ion-label>
   </ion-item>
   <ion-item>
-      <ion-label >&nbsp; &nbsp;  &nbsp; &nbsp; ส่วนสูง</ion-label>
-      <ion-input type="number"  value="number"> </ion-input>
+      <ion-label class="tall" >ส่วนสูง</ion-label>
+      <ion-input type="number" value="number"> </ion-input>
       <ion-label >เซ็นติเมตร</ion-label>
-    </ion-item>
+    </ion-item>-->
 
 </ion-content>
