@@ -9,11 +9,8 @@
           พัฒนาการ
         </ion-title>
       </ion-col>
-      <ion-col size=1>
-        <ion-icon name="star-outline" size="large"></ion-icon>
-      </ion-col>
-      <ion-col size=1>
-        <ion-icon name="more" size="large"></ion-icon>
+      <ion-col size=2 class="checkmark">
+        <ion-icon name="checkmark-circle"  size="large"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -21,15 +18,15 @@
 
 
 <ion-content>
-<ion-card>
+<ion-card *ngFor="let item of evo">
   <ion-card-header>
-   ด้านร่างกาย
+   {{item.title}}
   </ion-card-header>
   <ion-card-content>
-    <ion-list>
-      <ion-radio-group>
+    <ion-list *ngFor="let itm of item.evo">
+      <ion-radio-group >
       <ion-list-header>
-        1. กล้ามเนื้อ
+        {{itm.sub}}
       </ion-list-header>
       <ion-item>
 
