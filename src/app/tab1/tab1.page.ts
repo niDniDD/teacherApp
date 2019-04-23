@@ -11,25 +11,40 @@ export class Tab1Page {
   data: any;
 
   Level = {
-    class : "1",
-    room : "1"
+    class: "1",
+    room: "1"
+  }
+  classSchool = {
+    class: "1",
+    classroom: "1",
+    classtype: "ประถมศึกษา",
+    school_id: "5c8781a912124c001351a841",
+    term: "1",
+    year: "2562"
   }
 
 
-  
+
   constructor(public studentService: StudentService,
     public route: NavController
   ) { }
-  ngOnInit(){
+  ngOnInit() {
     this.getData();
   }
   list(item) {
-    this.route.navigateForward(['/profile',{sss:JSON.stringify(item)}]);
+    this.route.navigateForward(['/profile', { sss: JSON.stringify(item) }]);
     console.log(item);
   }
-  async getData(){
-    this.data = await this.studentService.getData();
-    console.log(this.data);
+  async getData() {
+    try {
+      var body = this.classSchool
+      console.log(body);
+      this.data = await this.studentService.getStudentById(body);
+      console.log(this.data);
+    } catch (error) {
+      throw error
+    }
+
   }
 }
 

@@ -19,9 +19,9 @@
   <ion-label>อนุบาล {{Level.class}}/{{Level.room}}</ion-label>
       </ion-item>
   
-  <ion-list >
-    <ion-item *ngFor="let item of data" (click)="list(item)"> 
-      <ion-row> 
+  <ion-list *ngIf="data && data.datas" >
+    <ion-item *ngFor="let item of data.datas" (click)="list(item)"> 
+      <ion-row style="width: 100vw;"> 
         <ion-col size="4"  >
             <ion-avatar item-start>
                 <img width="30" [src]="item.image">
@@ -30,7 +30,7 @@
     </ion-col>
     <ion-col size="8" >
       <p>
-          {{item.name}} {{item.lastname}}
+         {{item.nametitle}}{{item.firstname}} {{item.lastname}}
       </p>
       
     </ion-col>
