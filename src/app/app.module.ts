@@ -19,13 +19,16 @@ import { EditProfilePageModule } from './edit-profile/edit-profile.module';
 import { ScoreService } from './services/score/score.service';
 import { EvoserviceService } from './services/evoservice/evoservice.service';
 import { PortfolioService } from './services/portfolio/portfolio.service';
+import { HistoryHeightWeightPageModule } from './history-height-weight/history-height-weight.module';
+import { HistoryPortfolioPageModule } from './history-portfolio/history-portfolio.module';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule,EditProfilePageModule,PortfolioSavePageModule],
+  declarations: [AppComponent,ProfileComponent],
+  entryComponents: [ProfileComponent],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,ProtfolioPageModule,ProfilePageModule,HttpClientModule,ScorePageModule,EvoPageModule,ProfileSavePageModule,EditProfilePageModule,PortfolioSavePageModule,HistoryHeightWeightPageModule,HistoryPortfolioPageModule],
 
 
   providers: [

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-history-portfolio',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryPortfolioPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public modalcontroller: ModalController
+  ) { }
 
   ngOnInit() {
+  }
+
+  goBack() {
+    this.modalcontroller.dismiss();
   }
 
 }
