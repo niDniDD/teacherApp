@@ -5,15 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
-import { ProfileComponent } from './profile.component';
+import { HistoryHeightWeightPage } from './history-height-weight.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
-  },
-
+    component: HistoryHeightWeightPage
+  }
 ];
 
 @NgModule({
@@ -23,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProfilePage]
+  declarations: [HistoryHeightWeightPage]
 })
-export class ProfilePageModule {}
+export class HistoryHeightWeightPageModule {}

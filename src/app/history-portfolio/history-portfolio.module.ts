@@ -5,15 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ProfilePage } from './profile.page';
-import { ProfileComponent } from './profile.component';
+import { HistoryPortfolioPage } from './history-portfolio.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ProfilePage
-  },
-
+    component: HistoryPortfolioPage
+  }
 ];
 
 @NgModule({
@@ -23,6 +21,6 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ProfilePage]
+  declarations: [HistoryPortfolioPage]
 })
-export class ProfilePageModule {}
+export class HistoryPortfolioPageModule {}
