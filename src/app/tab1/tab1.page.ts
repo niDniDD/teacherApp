@@ -10,12 +10,8 @@ import { StudentService } from '../services/student.service';
 })
 export class Tab1Page {
   data: any;
-<<<<<<< HEAD
-  classSchool: any;
-=======
   dataclass: any;
 
->>>>>>> ba61c7a4efeb8003d91c2cfc4faa81d56dd6ba88
 
 
 
@@ -62,13 +58,8 @@ export class Tab1Page {
     }
     const resRoom: any = await this.studentService.getRoom(bodyRoom)
     console.log(resRoom)
-<<<<<<< HEAD
-
-  
-=======
     this.dataclass = resRoom;
     this.getData();
->>>>>>> ba61c7a4efeb8003d91c2cfc4faa81d56dd6ba88
   }
 
 
