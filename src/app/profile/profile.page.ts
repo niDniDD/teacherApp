@@ -47,7 +47,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: ScorePage,
       componentProps: {
-        data: this.dataclass
+        data: this.dataclass.data.class[0].gradetemplate.subjects
       }
     });
 

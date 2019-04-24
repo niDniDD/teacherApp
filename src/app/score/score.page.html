@@ -15,13 +15,13 @@
 </ion-header>
 
 <ion-content>
-<ion-card *ngFor="let item of score">
+<ion-card *ngFor="let item of data">
   <ion-card-header>
-    {{item.subjects}}
+    {{item.name}}
   </ion-card-header>
   <ion-row class= "content">
     <ion-col>
-      เต็ม<br><br>{{item.fullscore}}
+      เต็ม<br><br>{{item.fullpoint}}
     </ion-col> 
     <ion-col>
       คะแนน<br>
