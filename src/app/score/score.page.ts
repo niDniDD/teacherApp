@@ -8,15 +8,15 @@ import { ScoreService } from '../services/score/score.service';
   styleUrls: ['./score.page.scss'],
 })
 export class ScorePage implements OnInit {
-  @Input() data: any ;
-  score:any = [];
-
-  Score = [{name:'ภาษาไทย'},{name:'ภาษาอังกฤษ'},{name:'คณิตศาสตร์'}]
+  @Input() data: any;
+  score: any = [];
+  Dataclass: any;
+  Score = [{ name: 'ภาษาไทย' }, { name: 'ภาษาอังกฤษ' }, { name: 'คณิตศาสตร์' }]
   constructor(
     public route: NavController,
-    public modalcontroller:ModalController,
-    public scoreservice:ScoreService
-    ) { }
+    public modalcontroller: ModalController,
+    public scoreservice: ScoreService
+  ) { }
 
   ngOnInit() {
     this.getDataScore();
@@ -25,10 +25,10 @@ export class ScorePage implements OnInit {
   backProfile() {
     this.modalcontroller.dismiss();
   }
-  async getDataScore(){
+  async getDataScore() {
     this.score = await this.scoreservice.getdatascore()
     console.log(this.data);
   }
-  
-  }
+
+}
 

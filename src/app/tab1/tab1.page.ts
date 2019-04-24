@@ -38,7 +38,6 @@ export class Tab1Page {
       year: this.dataclass.data.year
     }
     console.log(classSchool);
-    console.log(this.dataclass.data.class[0].gradetemplate.subjects[0].name);
     try {
 
       this.data = await this.studentService.getStudentById(classSchool);
