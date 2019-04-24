@@ -19,7 +19,7 @@ export class StudentService {
     return this.httpclient.post(environment.apiUrl + '/api/student-yeartermclassclassroom', body, { headers: this.authorizationHeader() }).toPromise();
   }
 
-  getPortfolioById(body) {
+  getPortfolio(body) {
     return this.httpclient.post(environment.apiUrl + '/api/portfolio-condition', body, { headers: this.authorizationHeader() }).toPromise();
   }
 

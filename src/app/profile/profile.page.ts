@@ -21,7 +21,9 @@ import { AuthService } from '../services/auth/auth.service';
 export class ProfilePage implements OnInit {
 
   data: any;
+  datauser:any;
   dataclass: any;
+  dataportfolio:any;
 
   constructor(
     public route: NavController,
@@ -37,13 +39,12 @@ export class ProfilePage implements OnInit {
     let res: any = this.act.snapshot.paramMap.get('sss');
     this.data = JSON.parse(res)
     this.getUser()
-
-    console.log(this.data)
   }
   
   backtab4() {
     this.route.navigateBack('/tabs/tab1');
   }
+
   async score() {
     const modal = await this.modalcontroller.create({
       component: ScorePage,
@@ -51,19 +52,19 @@ export class ProfilePage implements OnInit {
         data: this.dataclass.data.class[0].gradetemplate.subjects
       }
     });
-
     return await modal.present();
-
   }
+
   async goProtfolio() {
     const modal = await this.modalcontroller.create({
       component: ProtfolioPage,
       componentProps: {
-        data: this.data
+        data: this.dataportfolio.data.items
       }
     });
     return await modal.present();
   }
+  
   async evo() {
     const modal = await this.modalcontroller.create({
       component: EvoPage,
@@ -71,10 +72,9 @@ export class ProfilePage implements OnInit {
         data: this.dataclass.data.class[0].developmenttemplate.developments
       }
     });
-
     return await modal.present();
-
   }
+
   async editprofile() {
     const modal = await this.modalcontroller.create({
       component: EditProfilePage,
@@ -82,10 +82,9 @@ export class ProfilePage implements OnInit {
         data: this.data
        }
       });
-    
       return await modal.present();
-    
   }
+
   async profilesave() {
     const modal = await this.modalcontroller.create({
       component: ProfileSavePage,
@@ -106,15 +105,30 @@ export class ProfilePage implements OnInit {
   }
 
   async getUser() {
-    const res: any = await this.auth.getUser();
-    console.log(res)
-
+    const res:any = await this.auth.getUser();
     var bodyRoom = {
       citizenid: res.data.citizenid,
       school_id: res.data.schoolid
     }
     const resRoom: any = await this.studentService.getRoom(bodyRoom)
-    console.log(resRoom)
+    this.datauser = res;
     this.dataclass = resRoom;
-}
+    this.getPortfolio()
+  }
+
+  async getPortfolio(){
+    var Portfolio = {
+      citizenid: this.data.citizenid,
+	    class: this.dataclass.data.class[0].class,
+      classroom: this.dataclass.data.class[0].room,
+      classtype: this.dataclass.data.class[0].classtype,
+      school_id: this.datauser.data.schoolid,
+      studentname: this.data.nametitle +this.data.firstname +" " +this.data.lastname,
+      term: this.dataclass.data.term,
+      year: this.dataclass.data.year
+    }
+    this.dataportfolio = await this.studentService.getPortfolio(Portfolio)
+    console.log(this.dataportfolio)
+  }
+
 }
