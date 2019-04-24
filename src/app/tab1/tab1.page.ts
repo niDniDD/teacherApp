@@ -24,10 +24,12 @@ export class Tab1Page {
     this.getUser();
     this.getData();
   }
+
   list(item) {
     this.route.navigateForward(['/profile', { sss: JSON.stringify(item) }]);
     console.log(item);
   }
+
   async getData() {
     var classSchool = {
       class: this.dataclass.data.class[0].class,
@@ -61,7 +63,6 @@ export class Tab1Page {
     this.dataclass = resRoom;
     this.getData();
   }
-
 
 
 }

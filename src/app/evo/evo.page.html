@@ -18,15 +18,15 @@
 
 
 <ion-content>
-<ion-card *ngFor="let item of evo">
+<ion-card *ngFor="let item of data">
   <ion-card-header>
-   {{item.title}}
+   {{item.name}}
   </ion-card-header>
   <ion-card-content>
-    <ion-list *ngFor="let itm of item.evo">
+    <ion-list *ngFor="let itm of item.items">
       <ion-radio-group >
       <ion-list-header>
-        {{itm.sub}}
+        {{itm.name}}
       </ion-list-header>
       <ion-item>
 

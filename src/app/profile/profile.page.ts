@@ -40,6 +40,7 @@ export class ProfilePage implements OnInit {
 
     console.log(this.data)
   }
+  
   backtab4() {
     this.route.navigateBack('/tabs/tab1');
   }
@@ -67,7 +68,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: EvoPage,
       componentProps: {
-        data: this.data
+        data: this.dataclass.data.class[0].developmenttemplate.developments
       }
     });
 
