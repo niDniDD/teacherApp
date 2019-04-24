@@ -63,7 +63,5 @@ export class Tab1Page {
     this.dataclass = resRoom;
     this.getData();
   }
-
-
 }
 
