@@ -10,19 +10,9 @@ import { StudentService } from '../services/student.service';
 })
 export class Tab1Page {
   data: any;
+  dataclass: any;
 
-  Level = {
-    class: "1",
-    room: "1"
-  }
-  classSchool = {
-    class: "1",
-    classroom: "1",
-    classtype: "ประถมศึกษา",
-    school_id: "5c8781a912124c001351a841",
-    term: "1",
-    year: "2562"
-  }
+
 
 
 
@@ -39,10 +29,18 @@ export class Tab1Page {
     console.log(item);
   }
   async getData() {
+    var classSchool = {
+      class: this.dataclass.data.class[0].class,
+      classroom: this.dataclass.data.class[0].room,
+      classtype: this.dataclass.data.class[0].classtype,
+      school_id: this.dataclass.data.school_id,
+      term: this.dataclass.data.term,
+      year: this.dataclass.data.year
+    }
+    console.log(classSchool);
     try {
-      var body = this.classSchool
-      console.log(body);
-      this.data = await this.studentService.getStudentById(body);
+      
+      this.data = await this.studentService.getStudentById(classSchool);
       console.log(this.data);
     } catch (error) {
       throw error
@@ -50,9 +48,18 @@ export class Tab1Page {
 
   }
 
- async getUser() {
+  async getUser() {
     const res: any = await this.auth.getUser();
     console.log(res)
+
+    var bodyRoom = {
+      citizenid: res.data.citizenid,
+      school_id: res.data.schoolid
+    }
+    const resRoom: any = await this.studentService.getRoom(bodyRoom)
+    console.log(resRoom)
+    this.dataclass = resRoom;
+    this.getData();
   }
 
 }
