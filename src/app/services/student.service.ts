@@ -23,5 +23,7 @@ export class StudentService {
     return this.httpclient.get('../assets/student.json').toPromise();
   }
 
-
+getRoom(body){
+  return this.httpclient.post(environment.apiUrl + '/api/staff-getroom', body, { headers: this.authorizationHeader()}).toPromise();
+}
 }

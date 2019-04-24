@@ -10,19 +10,8 @@ import { StudentService } from '../services/student.service';
 })
 export class Tab1Page {
   data: any;
+  classSchool: any;
 
-  Level = {
-    class: "1",
-    room: "1"
-  }
-  classSchool = {
-    class: "1",
-    classroom: "1",
-    classtype: "ประถมศึกษา",
-    school_id: "5c8781a912124c001351a841",
-    term: "1",
-    year: "2562"
-  }
 
 
 
@@ -50,10 +39,21 @@ export class Tab1Page {
 
   }
 
- async getUser() {
+  async getUser() {
     const res: any = await this.auth.getUser();
     console.log(res)
+
+    var bodyRoom = {
+      citizenid: res.data.citizenid,
+      school_id: res.data.schoolid
+    }
+    const resRoom: any = await this.studentService.getRoom(bodyRoom)
+    console.log(resRoom)
+
+  
   }
+
+
 
 }
 
