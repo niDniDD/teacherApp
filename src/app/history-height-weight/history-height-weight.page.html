@@ -1,32 +1,50 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-row>
-        <ion-col size=1>
-          <ion-icon name="close-circle" size="large" (click)="goBack()"> </ion-icon>
-        </ion-col>
-        <ion-col size=9>
-          <ion-title class="title">
-              ประวัติน้ำหนัก-ส่วนสูง
-          </ion-title>
-        </ion-col>
-        <ion-col size=2 class="checkmark">
-          <ion-icon name="checkmark-circle"  size="large"></ion-icon>
-        </ion-col>
-      </ion-row>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size=1>
+        <ion-icon name="close-circle" size="large" (click)="goBack()"> </ion-icon>
+      </ion-col>
+      <ion-col size=9>
+        <ion-title class="title">
+          ประวัติน้ำหนัก-ส่วนสูง
+        </ion-title>
+      </ion-col>
+      <ion-col size=2 class="checkmark">
+        <ion-icon name="checkmark-circle" size="large"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
 
 <ion-content>
 
-<ion-row>
-  <ion-col size="12" class="headhistory">
-    <h3>น้ำหนัก-ส่วนสูง</h3>
-  </ion-col>
-</ion-row>
+  <ion-row>
+    <ion-col size="12" class="headhistory">
+      <h3>น้ำหนัก-ส่วนสูง</h3>
+    </ion-col>
+  </ion-row>
+
+  <div *ngIf="dataWeightHeight && dataWeightHeight.data && dataWeightHeight.data.personality">
+    <ion-card *ngFor="let item of dataWeightHeight.data.personality">
+      <ion-card-header>
+        วัน/เดือน/ปี {{item.date}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-col size="6" class="detail">
+            ส่วนสูง : {{item.height}}
+          </ion-col>
+          <ion-col size="6" class="detail">
+            น้ำหนัก : {{item.weight}}
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </div>
 
 </ion-content>
 
-<ion-fab vertical="bottom" horizontal="end" >
-  <ion-fab-button >
+<ion-fab vertical="bottom" horizontal="end">
+  <ion-fab-button (click)="addhw()">
     <ion-icon name="add"></ion-icon>
   </ion-fab-button>

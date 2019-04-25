@@ -61,7 +61,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: ProtfolioPage,
       componentProps: {
-        data: this.dataportfolio.data.items
+        data: this.data
       }
     });
     return await modal.present();
@@ -91,7 +91,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: HistoryHeightWeightPage,
       componentProps: {
-        data: this.dataWeightHeight.data.personality
+        data: this.data
       }
     });
     return await modal.present();
@@ -125,18 +125,9 @@ export class ProfilePage implements OnInit {
       term: this.dataclass.data.term,
       year: this.dataclass.data.year
     }
-    this.dataportfolio = await this.studentService.getPortfolio(bodyStudent)
-    console.log(this.dataportfolio)
-    this.dataWeightHeight = await this.studentService.getWeightHeight(bodyStudent)
-    console.log(this.dataWeightHeight)
-  }
-
-  async getPortfolio(){
     
   }
 
-  async getWeightHeight(){
-    
-  }
+ 
 
 }
