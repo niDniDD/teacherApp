@@ -6,7 +6,7 @@ import { NavController, ModalController } from '@ionic/angular';
   styleUrls: ['./portfolio-save.page.scss'],
 })
 export class PortfolioSavePage implements OnInit {
-data: any
+  data:any
 
 
   constructor( public modalcontroller: ModalController,

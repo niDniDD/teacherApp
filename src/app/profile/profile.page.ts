@@ -24,6 +24,7 @@ export class ProfilePage implements OnInit {
   datauser:any;
   dataclass: any;
   dataportfolio:any;
+  dataWeightHeight:any;
 
   constructor(
     public route: NavController,
@@ -89,7 +90,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: ProfileSavePage,
       componentProps: {
-        data: this.data
+        data: this.dataWeightHeight.data.personality
       }
     });
     return await modal.present();
@@ -114,6 +115,7 @@ export class ProfilePage implements OnInit {
     this.datauser = res;
     this.dataclass = resRoom;
     this.getPortfolio()
+    this.getWeightHeight()
   }
 
   async getPortfolio(){
@@ -128,7 +130,20 @@ export class ProfilePage implements OnInit {
       year: this.dataclass.data.year
     }
     this.dataportfolio = await this.studentService.getPortfolio(Portfolio)
-    console.log(this.dataportfolio)
+  }
+
+  async getWeightHeight(){
+    var WeightHeight = {
+      citizenid: this.data.citizenid,
+	    class: this.dataclass.data.class[0].class,
+      classroom: this.dataclass.data.class[0].room,
+      classtype: this.dataclass.data.class[0].classtype,
+      school_id: this.datauser.data.schoolid,
+      studentname: this.data.nametitle +this.data.firstname +" " +this.data.lastname,
+      term: this.dataclass.data.term,
+      year: this.dataclass.data.year
+    }
+    this.dataWeightHeight = await this.studentService.getWeightHeight(WeightHeight)
   }
 
 }

@@ -9,6 +9,8 @@ import { ModalController} from '@ionic/angular';
 })
 export class ProfileSavePage implements OnInit {
 
+  data:any
+
   constructor(
     public route: NavController,
     public act: ActivatedRoute,
@@ -16,6 +18,7 @@ export class ProfileSavePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.data)
   }
 
   profile(){
