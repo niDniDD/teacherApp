@@ -11,6 +11,7 @@ import { ProfileSavePage } from '../profile-save/profile-save.page';
 import { ProfileComponent } from './profile.component';
 import { StudentService } from '../services/student.service';
 import { AuthService } from '../services/auth/auth.service';
+import { HistoryHeightWeightPage } from '../history-height-weight/history-height-weight.page';
 
 
 @Component({
@@ -88,7 +89,7 @@ export class ProfilePage implements OnInit {
 
   async profilesave() {
     const modal = await this.modalcontroller.create({
-      component: ProfileSavePage,
+      component: HistoryHeightWeightPage,
       componentProps: {
         data: this.dataWeightHeight.data.personality
       }
