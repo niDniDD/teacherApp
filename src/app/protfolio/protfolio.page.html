@@ -18,14 +18,14 @@
 
 <ion-content>
 
-  <ion-card *ngFor="let item of dataPortfolio">
+  <ion-card *ngFor="let item of data">
     <ion-grid>
       <ion-row>
 
         <ion-col size=5>
           <ion-slides pager="true">
-              <ion-slide *ngFor="let img of item.image">
-                  <img class="img-style"  [src]="img.url">
+              <ion-slide *ngFor="let img of item.images">
+                  <img class="img-style"  [src]="img">
               </ion-slide>
             </ion-slides>
 

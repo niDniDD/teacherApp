@@ -12,10 +12,6 @@ export class Tab1Page {
   data: any;
   dataclass: any;
 
-
-
-
-
   constructor(public studentService: StudentService,
     public route: NavController,
     private auth: AuthService
@@ -43,7 +39,7 @@ export class Tab1Page {
     try {
 
       this.data = await this.studentService.getStudentById(classSchool);
-      console.log(this.data);
+      console.log(this.data.data);
     } catch (error) {
       throw error
     }
@@ -63,5 +59,8 @@ export class Tab1Page {
     this.dataclass = resRoom;
     this.getData();
   }
+
+
+
 }
 

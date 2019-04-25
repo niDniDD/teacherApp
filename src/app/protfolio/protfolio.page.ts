@@ -9,8 +9,8 @@ import { PortfolioService } from '../services/portfolio/portfolio.service';
   styleUrls: ['./protfolio.page.scss'],
 })
 export class ProtfolioPage implements OnInit {
-data: any
-dataPortfolio: any;
+  data: any
+  dataPortfolio: any;
 
   constructor(
     public route: NavController,
@@ -25,7 +25,7 @@ dataPortfolio: any;
 
   async getData(){
     this.dataPortfolio = await this.portfolioservice.getData();
-    console.log(this.dataPortfolio);
+    console.log(this.data);
   }
   
   back() {
