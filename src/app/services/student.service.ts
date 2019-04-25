@@ -31,4 +31,8 @@ export class StudentService {
     return this.httpclient.post(environment.apiUrl + '/api/staff-getroom', body, { headers: this.authorizationHeader()}).toPromise();
   }
 
+  getWeightHeight(body){
+    return this.httpclient.post(environment.apiUrl + '/api/education-personality', body, { headers: this.authorizationHeader()}).toPromise();
+  }
+
 }
