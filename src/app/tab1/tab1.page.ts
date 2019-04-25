@@ -39,7 +39,7 @@ export class Tab1Page {
     try {
 
       this.data = await this.studentService.getStudentById(classSchool);
-      console.log(this.data.data);
+      console.log(this.data);
     } catch (error) {
       throw error
     }

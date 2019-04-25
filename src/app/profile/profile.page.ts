@@ -39,7 +39,7 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     let res: any = this.act.snapshot.paramMap.get('sss');
     this.data = JSON.parse(res)
-    this.getUser()
+    this.getData()
   }
   
   backtab4() {
@@ -105,45 +105,37 @@ export class ProfilePage implements OnInit {
     return await popover.present();
   }
 
-  async getUser() {
-    const res:any = await this.auth.getUser();
+  async getData() {
+    this.datauser = await this.auth.getUser();
+    console.log(this.datauser)
     var bodyRoom = {
-      citizenid: res.data.citizenid,
-      school_id: res.data.schoolid
+      citizenid: this.datauser.data.citizenid,
+      school_id: this.datauser.data.schoolid
     }
-    const resRoom: any = await this.studentService.getRoom(bodyRoom)
-    this.datauser = res;
-    this.dataclass = resRoom;
-    this.getPortfolio()
-    this.getWeightHeight()
+    this.dataclass = await this.studentService.getRoom(bodyRoom)
+    console.log(this.dataclass)
+    var bodyStudent = {
+      citizenid: this.data.citizenid,
+	    class: this.dataclass.data.class[0].class,
+      classroom: this.dataclass.data.class[0].room,
+      classtype: this.dataclass.data.class[0].classtype,
+      school_id: this.datauser.data.schoolid,
+      studentname: this.data.nametitle +this.data.firstname +" " +this.data.lastname,
+      term: this.dataclass.data.term,
+      year: this.dataclass.data.year
+    }
+    this.dataportfolio = await this.studentService.getPortfolio(bodyStudent)
+    console.log(this.dataportfolio)
+    this.dataWeightHeight = await this.studentService.getWeightHeight(bodyStudent)
+    console.log(this.dataWeightHeight)
   }
 
   async getPortfolio(){
-    var Portfolio = {
-      citizenid: this.data.citizenid,
-	    class: this.dataclass.data.class[0].class,
-      classroom: this.dataclass.data.class[0].room,
-      classtype: this.dataclass.data.class[0].classtype,
-      school_id: this.datauser.data.schoolid,
-      studentname: this.data.nametitle +this.data.firstname +" " +this.data.lastname,
-      term: this.dataclass.data.term,
-      year: this.dataclass.data.year
-    }
-    this.dataportfolio = await this.studentService.getPortfolio(Portfolio)
+    
   }
 
   async getWeightHeight(){
-    var WeightHeight = {
-      citizenid: this.data.citizenid,
-	    class: this.dataclass.data.class[0].class,
-      classroom: this.dataclass.data.class[0].room,
-      classtype: this.dataclass.data.class[0].classtype,
-      school_id: this.datauser.data.schoolid,
-      studentname: this.data.nametitle +this.data.firstname +" " +this.data.lastname,
-      term: this.dataclass.data.term,
-      year: this.dataclass.data.year
-    }
-    this.dataWeightHeight = await this.studentService.getWeightHeight(WeightHeight)
+    
   }
 
 }
