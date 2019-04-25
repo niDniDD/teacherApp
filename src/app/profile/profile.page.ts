@@ -91,7 +91,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: HistoryHeightWeightPage,
       componentProps: {
-        data: this.dataWeightHeight.data.personality[0]
+        data: this.dataWeightHeight.data.personality
       }
     });
     return await modal.present();
