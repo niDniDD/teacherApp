@@ -22,10 +22,6 @@ import { HistoryHeightWeightPage } from '../history-height-weight/history-height
 export class ProfilePage implements OnInit {
 
   data: any;
-  datauser:any;
-  dataclass:any;
-  dataportfolio:any;
-  dataWeightHeight:any;
 
   constructor(
     public route: NavController,
@@ -40,7 +36,6 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     let res: any = this.act.snapshot.paramMap.get('sss');
     this.data = JSON.parse(res)
-    this.getData()
   }
   
   backtab4() {
@@ -71,7 +66,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: EvoPage,
       componentProps: {
-        data: this.dataclass.data.class[0].developmenttemplate.developments
+        data: this.data
       }
     });
     return await modal.present();
@@ -105,18 +100,4 @@ export class ProfilePage implements OnInit {
     });
     return await popover.present();
   }
-
-  async getData() {
-    this.datauser = await this.auth.getUser();
-    console.log(this.datauser)
-    var bodyRoom = {
-      citizenid: this.datauser.data.citizenid,
-      school_id: this.datauser.data.schoolid
-    }
-    this.dataclass = await this.studentService.getRoom(bodyRoom)
-    console.log(this.dataclass)
-  }
-
- 
-
 }

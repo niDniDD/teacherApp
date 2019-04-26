@@ -33,6 +33,7 @@ export class ProtfolioPage implements OnInit {
   back() {
     this.modalcontroller.dismiss();
   }
+  
   async addPort() {
     const modal = await this.modalcontroller.create({
       component: PortfolioSavePage ,
