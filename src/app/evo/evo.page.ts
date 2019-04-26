@@ -16,7 +16,7 @@ export class EvoPage implements OnInit {
   dataclass:any;
   dataevo:any
   radioPoint:any
-  dddd= 4
+  dddd= 3
   constructor(
     public route: NavController,
     public act: ActivatedRoute,

@@ -31,7 +31,7 @@
           <ion-item>
             <ion-row>
               <ion-col size=2 *ngFor="let itmChk of [1,2,3,4,5]; let i = index">
-                <ion-radio value={{i+1}} checked=" 4 === i+1 ?  true : false"></ion-radio>
+                <ion-radio value={{i+1}} [checked]=" itm.point == i+1 "></ion-radio>
                 <ion-row>
                   {{i+1}}
                 </ion-row>
