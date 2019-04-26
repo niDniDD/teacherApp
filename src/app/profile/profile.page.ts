@@ -97,14 +97,14 @@ export class ProfilePage implements OnInit {
     return await modal.present();
   }
 
-  async presentPopover(event) {
-    const popover = await this.popoverController.create({
-      component: ProfileComponent,
-      event,
-      translucent: true
-    });
-    return await popover.present();
-  }
+  // async presentPopover(event) {
+  //   const popover = await this.popoverController.create({
+  //     component: ProfileComponent,
+  //     event,
+  //     translucent: true
+  //   });
+  //   return await popover.present();
+  // }
 
   async getData() {
     this.datauser = await this.auth.getUser();
