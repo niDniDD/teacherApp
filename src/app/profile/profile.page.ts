@@ -23,7 +23,7 @@ export class ProfilePage implements OnInit {
 
   data: any;
   datauser:any;
-  dataclass: any;
+  dataclass:any;
   dataportfolio:any;
   dataWeightHeight:any;
 
@@ -51,7 +51,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: ScorePage,
       componentProps: {
-        data: this.dataclass.data.class[0].gradetemplate.subjects
+        data: this.data
       }
     });
     return await modal.present();
@@ -115,17 +115,6 @@ export class ProfilePage implements OnInit {
     }
     this.dataclass = await this.studentService.getRoom(bodyRoom)
     console.log(this.dataclass)
-    var bodyStudent = {
-      citizenid: this.data.citizenid,
-	    class: this.dataclass.data.class[0].class,
-      classroom: this.dataclass.data.class[0].room,
-      classtype: this.dataclass.data.class[0].classtype,
-      school_id: this.datauser.data.schoolid,
-      studentname: this.data.nametitle +this.data.firstname +" " +this.data.lastname,
-      term: this.dataclass.data.term,
-      year: this.dataclass.data.year
-    }
-    
   }
 
  

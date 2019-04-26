@@ -35,4 +35,8 @@ export class StudentService {
     return this.httpclient.post(environment.apiUrl + '/api/education-personality', body, { headers: this.authorizationHeader()}).toPromise();
   }
 
+  saveWeightHeight(body){
+    return this.httpclient.post(environment.apiUrl + '/api/education-savepersonality', body, { headers: this.authorizationHeader()}).toPromise();
+  }
+
 }

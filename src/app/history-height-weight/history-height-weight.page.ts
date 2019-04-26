@@ -34,11 +34,11 @@ export class HistoryHeightWeightPage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: ProfileSavePage,
       componentProps: {
-        data: this.data
+        data: this.dataWeightHeight
       }
     });
 
-     modal.present();
+    modal.present();
     const { data } = await modal.onDidDismiss();
     console.log(data);
 

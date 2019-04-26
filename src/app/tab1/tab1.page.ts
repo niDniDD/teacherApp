@@ -11,14 +11,17 @@ import { StudentService } from '../services/student.service';
 export class Tab1Page {
   data: any;
   dataclass: any;
-
+  token:any
+  
   constructor(public studentService: StudentService,
     public route: NavController,
     private auth: AuthService
-  ) { }
+  ) {
+    
+   }
+  
   ngOnInit() {
     this.getUser();
-    this.getData();
   }
 
   list(item) {
@@ -37,7 +40,6 @@ export class Tab1Page {
     }
     console.log(classSchool);
     try {
-
       this.data = await this.studentService.getStudentById(classSchool);
       console.log(this.data);
     } catch (error) {
@@ -49,15 +51,16 @@ export class Tab1Page {
   async getUser() {
     const res: any = await this.auth.getUser();
     console.log(res)
-
-    var bodyRoom = {
-      citizenid: res.data.citizenid,
-      school_id: res.data.schoolid
+    if(res.data){
+      var bodyRoom = {
+        citizenid: res.data.citizenid,
+        school_id: res.data.schoolid
+      }
+      const resRoom: any = await this.studentService.getRoom(bodyRoom)
+      console.log(resRoom)
+      this.dataclass = resRoom;
+      this.getData();
     }
-    const resRoom: any = await this.studentService.getRoom(bodyRoom)
-    console.log(resRoom)
-    this.dataclass = resRoom;
-    this.getData();
   }
 
 
