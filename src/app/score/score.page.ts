@@ -16,7 +16,10 @@ export class ScorePage implements OnInit {
   grad:any
   score:Array<any>=[]
   datascore:any
-  totalscore:number=0;
+  totalfullpoint = 0;
+  totalpoint = 0;
+  totalpercepoint = 0;
+  percepoint;
   constructor(
     public route: NavController,
     public modalcontroller: ModalController,
@@ -32,12 +35,22 @@ export class ScorePage implements OnInit {
   backProfile() {
     this.modalcontroller.dismiss();
   }
+
   async success() {
+    for (let i = 0; i < this.datascore.length; i++) {
+      let element = this.datascore[i];
+      this.totalpoint += parseInt(element.point)
+      this.totalfullpoint += parseInt(element.fullpoint)
+      this.percepoint = element.point/element.fullpoint*100
+      this.datascore[i].percent = String(this.percepoint)
+    }
+
+    this.totalpercepoint = this.totalpoint/this.totalfullpoint*100
     this.grad = {
       name:"Grad",
-      getpointamount:60,
-      percenamount:20,
-      pointamount:300,
+      getpointamount:this.totalpoint,
+      percenamount:this.totalpercepoint,
+      pointamount:this.totalfullpoint,
       subjects:this.datascore
     }
     var bodyStudent = {
@@ -50,7 +63,12 @@ export class ScorePage implements OnInit {
       term: this.dataclass.data.term,
       year: this.dataclass.data.year
     }
-    console.log(this.totalscore)
+    console.log(bodyStudent)
+    const res = await this.studentService.saveGrade(bodyStudent)
+    console.log(res)
+    if(res){
+      this.modalcontroller.dismiss();
+    }
   }
 
   async getData() {
@@ -60,7 +78,11 @@ export class ScorePage implements OnInit {
       school_id: this.datauser.data.schoolid
     }
     this.dataclass = await this.studentService.getRoom(bodyRoom)
+    this.dataclass.data.class[0].gradetemplate.subjects.forEach(element => {
+      element.point = 0
+    });
     this.datascore = this.dataclass.data.class[0].gradetemplate.subjects
+    
   }
 
 }

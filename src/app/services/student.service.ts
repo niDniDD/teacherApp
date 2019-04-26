@@ -39,4 +39,8 @@ export class StudentService {
     return this.httpclient.post(environment.apiUrl + '/api/education-savepersonality', body, { headers: this.authorizationHeader()}).toPromise();
   }
 
+  saveGrade(body){
+    return this.httpclient.post(environment.apiUrl + '/api/education-savegrade', body, { headers: this.authorizationHeader()}).toPromise();
+  }
+
 }
