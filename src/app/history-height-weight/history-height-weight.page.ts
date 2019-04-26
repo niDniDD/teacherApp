@@ -41,7 +41,6 @@ export class HistoryHeightWeightPage implements OnInit {
     modal.present();
     const { data } = await modal.onDidDismiss();
     console.log(data);
-
   }
 
 
@@ -67,4 +66,6 @@ export class HistoryHeightWeightPage implements OnInit {
     this.dataWeightHeight = await this.studentService.getWeightHeight(bodyStudent)
     console.log(this.dataWeightHeight)
   }
+
+  
 }
