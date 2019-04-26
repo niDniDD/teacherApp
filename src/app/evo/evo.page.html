@@ -18,20 +18,20 @@
 
 
 <ion-content *ngIf="dataevo">
-  <ion-card *ngFor="let item of dataevo">
+  <ion-card *ngFor="let item of dataevo;let indexDataevo = index">
     <ion-card-header>
       {{item.name}}
     </ion-card-header>
     <ion-card-content>
-      <ion-list *ngFor="let itm of item.items">
+      <ion-list *ngFor="let itm of item.items;let indexItem = index">
         <ion-radio-group>
           <ion-list-header>
-            {{itm.name}}                {{itm.point}}
+            {{itm.name}}
           </ion-list-header>
           <ion-item>
             <ion-row>
               <ion-col size=2 *ngFor="let itmChk of [1,2,3,4,5]; let i = index">
-                <ion-radio value={{i+1}} [checked]=" itm.point == i+1 "></ion-radio>
+                <ion-radio value={{i+1}} [checked]=" itm.point == i+1 " (click)="onCheck(itm,itmChk,indexDataevo,indexItem)"></ion-radio>
                 <ion-row>
                   {{i+1}}
                 </ion-row>

@@ -15,7 +15,7 @@ export class EvoPage implements OnInit {
   datauser:any;
   dataclass:any;
   dataevo:any
-  radioPoint:any
+  res:any
   constructor(
     public route: NavController,
     public act: ActivatedRoute,
@@ -34,7 +34,25 @@ export class EvoPage implements OnInit {
   }
 
   async Success(){
+    var bodyDevelopments = {
+      citizenid: this.data.citizenid,
+      class: this.dataclass.data.class[0].class,
+      classroom: this.dataclass.data.class[0].room,
+      classtype: this.dataclass.data.class[0].classtype,
+      school_id: this.datauser.data.schoolid,
+      studentid: this.data.studentid,
+      term: this.dataclass.data.term,
+      year: this.dataclass.data.year,
+      development: this.res.data.development
+    }
+    console.log(bodyDevelopments);
+    const res = await this.studentService.saveDevelopment(bodyDevelopments)
+    console.log(res);
+  }
 
+  async onCheck(item,itemChk,indexDataevo,indexItem){
+    item.point = itemChk
+    this.dataevo[indexDataevo].items[indexItem].point = String(item.point)
   }
 
   async getData() {
@@ -55,13 +73,7 @@ export class EvoPage implements OnInit {
       term: this.dataclass.data.term,
       year: this.dataclass.data.year
     }
-    const res:any = await this.studentService.getDevelopment(bodyDevelopments)
-    this.dataevo = res.data.development.developments
-    console.log(res);
-    for (let i = 0; i < res.data.development.developments.length; i++) {
-      const element = res.data.development.developments[i];
-      console.log(element.items);
-
-    }
+    this.res = await this.studentService.getDevelopment(bodyDevelopments)
+    this.dataevo = this.res.data.development.developments
   }
 }
