@@ -6,13 +6,13 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *ngIf="dataclassSchool">
   <ion-row>
       <ion-searchbar></ion-searchbar>
   </ion-row>
   <ion-list>
       <ion-item>
-  <ion-label>อนุบาล/</ion-label>
+  <ion-label>อนุบาล {{dataclassSchool.class}}/{{dataclassSchool.classroom}}</ion-label>
       </ion-item>
   
   <ion-list *ngIf="data && data.datas" >
