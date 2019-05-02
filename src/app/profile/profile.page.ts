@@ -22,10 +22,6 @@ import { HistoryHeightWeightPage } from '../history-height-weight/history-height
 export class ProfilePage implements OnInit {
 
   data: any;
-  datauser:any;
-  dataclass: any;
-  dataportfolio:any;
-  dataWeightHeight:any;
 
   constructor(
     public route: NavController,
@@ -40,7 +36,6 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
     let res: any = this.act.snapshot.paramMap.get('sss');
     this.data = JSON.parse(res)
-    this.getData()
   }
   
   backtab4() {
@@ -51,7 +46,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: ScorePage,
       componentProps: {
-        data: this.dataclass.data.class[0].gradetemplate.subjects
+        data: this.data
       }
     });
     return await modal.present();
@@ -71,7 +66,7 @@ export class ProfilePage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: EvoPage,
       componentProps: {
-        data: this.dataclass.data.class[0].developmenttemplate.developments
+        data: this.data
       }
     });
     return await modal.present();
@@ -97,37 +92,13 @@ export class ProfilePage implements OnInit {
     return await modal.present();
   }
 
-  async presentPopover(event) {
-    const popover = await this.popoverController.create({
-      component: ProfileComponent,
-      event,
-      translucent: true
-    });
-    return await popover.present();
-  }
-
-  async getData() {
-    this.datauser = await this.auth.getUser();
-    console.log(this.datauser)
-    var bodyRoom = {
-      citizenid: this.datauser.data.citizenid,
-      school_id: this.datauser.data.schoolid
-    }
-    this.dataclass = await this.studentService.getRoom(bodyRoom)
-    console.log(this.dataclass)
-    var bodyStudent = {
-      citizenid: this.data.citizenid,
-	    class: this.dataclass.data.class[0].class,
-      classroom: this.dataclass.data.class[0].room,
-      classtype: this.dataclass.data.class[0].classtype,
-      school_id: this.datauser.data.schoolid,
-      studentname: this.data.nametitle +this.data.firstname +" " +this.data.lastname,
-      term: this.dataclass.data.term,
-      year: this.dataclass.data.year
-    }
-    
-  }
-
- 
+  // async presentPopover(event) {
+  //   const popover = await this.popoverController.create({
+  //     component: ProfileComponent,
+  //     event,
+  //     translucent: true
+  //   });
+  //   return await popover.present();
+  // }
 
 }

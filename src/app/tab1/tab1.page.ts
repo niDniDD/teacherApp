@@ -11,14 +11,18 @@ import { StudentService } from '../services/student.service';
 export class Tab1Page {
   data: any;
   dataclass: any;
-
+  dataclassSchool:any;
+  token:any
+  
   constructor(public studentService: StudentService,
     public route: NavController,
     private auth: AuthService
-  ) { }
+  ) {
+    
+   }
+  
   ngOnInit() {
     this.getUser();
-    this.getData();
   }
 
   list(item) {
@@ -27,7 +31,7 @@ export class Tab1Page {
   }
 
   async getData() {
-    var classSchool = {
+    this.dataclassSchool = {
       class: this.dataclass.data.class[0].class,
       classroom: this.dataclass.data.class[0].room,
       classtype: this.dataclass.data.class[0].classtype,
@@ -35,10 +39,9 @@ export class Tab1Page {
       term: this.dataclass.data.term,
       year: this.dataclass.data.year
     }
-    console.log(classSchool);
+    console.log(this.dataclassSchool);
     try {
-
-      this.data = await this.studentService.getStudentById(classSchool);
+      this.data = await this.studentService.getStudentById(this.dataclassSchool);
       console.log(this.data);
     } catch (error) {
       throw error
@@ -49,15 +52,16 @@ export class Tab1Page {
   async getUser() {
     const res: any = await this.auth.getUser();
     console.log(res)
-
-    var bodyRoom = {
-      citizenid: res.data.citizenid,
-      school_id: res.data.schoolid
+    if(res.data){
+      var bodyRoom = {
+        citizenid: res.data.citizenid,
+        school_id: res.data.schoolid
+      }
+      const resRoom: any = await this.studentService.getRoom(bodyRoom)
+      console.log(resRoom)
+      this.dataclass = resRoom;
+      this.getData();
     }
-    const resRoom: any = await this.studentService.getRoom(bodyRoom)
-    console.log(resRoom)
-    this.dataclass = resRoom;
-    this.getData();
   }
 
 

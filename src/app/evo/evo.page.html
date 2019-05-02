@@ -10,68 +10,67 @@
         </ion-title>
       </ion-col>
       <ion-col size=2 class="checkmark">
-        <ion-icon name="checkmark-circle"  size="large"></ion-icon>
+        <ion-icon name="checkmark-circle" size="large" (click)="Success()"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-content>
-<ion-card *ngFor="let item of data">
-  <ion-card-header>
-   {{item.name}}
-  </ion-card-header>
-  <ion-card-content>
-    <ion-list *ngFor="let itm of item.items">
-      <ion-radio-group >
-      <ion-list-header>
-        {{itm.name}}
-      </ion-list-header>
-      <ion-item>
+<ion-content *ngIf="dataevo">
+  <ion-card *ngFor="let item of dataevo;let indexDataevo = index">
+    <ion-card-header>
+      {{item.name}}
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list *ngFor="let itm of item.items;let indexItem = index">
+        <ion-radio-group>
+          <ion-list-header>
+            {{itm.name}}
+          </ion-list-header>
+          <ion-item>
+            <ion-row>
+              <ion-col size=2 *ngFor="let itmChk of [1,2,3,4,5]; let i = index">
+                <ion-radio value={{i+1}} [checked]=" itm.point == i+1 " (click)="onCheck(itm,itmChk,indexDataevo,indexItem)"></ion-radio>
+                <ion-row>
+                  {{i+1}}
+                </ion-row>
+              </ion-col>
+              <!-- <ion-col size=2>
+                <ion-radio value="2" checked="itm.point === '2' ?  true : false"></ion-radio>
+                <ion-row>
+                  2
+                </ion-row>
+              </ion-col>
+              <ion-col size=2>
+                <ion-radio value="3" checked="itm.point === '3' ?  true : false"></ion-radio>
+                <ion-row>
+                  3
+                </ion-row>
+              </ion-col>
+              <ion-col size=2>
+                <ion-radio value="4" checked="itm.point === '4' ?  true : false"></ion-radio>
+                <ion-row>
+                  4
+                </ion-row>
+              </ion-col>
+              <ion-col size=2>
+                <ion-radio value="5" checked></ion-radio>
+                <ion-row>
+                  5
+                </ion-row>
+              </ion-col> -->
+            </ion-row>
 
-        <ion-row>
-          <ion-col size=2>
-            <ion-radio checked="start" value="1"></ion-radio>
-          <ion-row>
-            1
-          </ion-row>
-        </ion-col>
-        <ion-col size=2>
-            <ion-radio checked="start" value="2"></ion-radio>
-          <ion-row>
-            2
-          </ion-row>
-        </ion-col>
-        <ion-col size=2>
-            <ion-radio checked="start" value="3"></ion-radio>
-          <ion-row>
-            3
-          </ion-row>
-        </ion-col>
-        <ion-col size=2>
-            <ion-radio checked="start" value="4"></ion-radio>
-          <ion-row>
-            4
-          </ion-row>
-        </ion-col>
-        <ion-col size=2>
-            <ion-radio checked="start" value="5"></ion-radio>
-          <ion-row>
-            5
-          </ion-row>
-        </ion-col>
-        </ion-row>
-        
-      </ion-item>
-    </ion-radio-group>
-    </ion-list>
-  </ion-card-content>
-</ion-card>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
 
 <ion-footer>
   <ion-row>
-   
+
   </ion-row>
 </ion-footer>

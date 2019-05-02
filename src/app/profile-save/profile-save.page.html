@@ -23,7 +23,7 @@
     <ion-label class="date">วันที่</ion-label>
   </ion-col>
   <ion-col class="Datacol2">
-    <ion-datetime displayFormat="DD MM YY" placeholder="เลือกวันที่" checkmark=""  ></ion-datetime>
+    <ion-datetime displayFormat="DD MM YY" placeholder="เลือกวันที่" checkmark=""  [(ngModel)]="date"></ion-datetime>
   </ion-col>
   <ion-col class="Datacol3">
     <ion-label class="unit">วัน/เดือน/ปี</ion-label>
@@ -34,7 +34,7 @@
     <ion-label class="weight">น้ำหนัก</ion-label>
   </ion-col>
   <ion-col class="Datacol2">
-    <ion-item><ion-input class="input" type="number" value="number" ></ion-input></ion-item>
+    <ion-item><ion-input class="input" type="number" value="number" [(ngModel)]="weight"></ion-input></ion-item>
   </ion-col>
   <ion-col class="Datacol3">
     <ion-label class="unit">กิโลกรัม</ion-label>
@@ -45,7 +45,7 @@
     <ion-label class="height">ส่วนสูง</ion-label>
   </ion-col>
   <ion-col class="Datacol2">
-    <ion-item><ion-input class="input" type="number" value="number"  ></ion-input></ion-item>
+    <ion-item><ion-input class="input" type="number" value="number" [(ngModel)]="height"></ion-input></ion-item>
   </ion-col>
   <ion-col class="Datacol3">
     <ion-label class="unit">เซนติเมตร</ion-label>

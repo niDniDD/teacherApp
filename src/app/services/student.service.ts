@@ -35,4 +35,20 @@ export class StudentService {
     return this.httpclient.post(environment.apiUrl + '/api/education-personality', body, { headers: this.authorizationHeader()}).toPromise();
   }
 
+  getDevelopment(body){
+    return this.httpclient.post(environment.apiUrl + '/api/get-education-development', body, { headers: this.authorizationHeader()}).toPromise();
+  }
+
+  saveWeightHeight(body){
+    return this.httpclient.post(environment.apiUrl + '/api/education-savepersonality', body, { headers: this.authorizationHeader()}).toPromise();
+  }
+
+  saveGrade(body){
+    return this.httpclient.post(environment.apiUrl + '/api/education-savegrade', body, { headers: this.authorizationHeader()}).toPromise();
+  }
+
+  saveDevelopment(body){
+    return this.httpclient.post(environment.apiUrl + '/api/save-development', body, { headers: this.authorizationHeader()}).toPromise();
+  }
+
 }
