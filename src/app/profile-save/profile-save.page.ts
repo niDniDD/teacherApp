@@ -27,6 +27,7 @@ export class ProfileSavePage implements OnInit {
     this.ModalController.dismiss();
   }
   success(){
+    
     this.ModalController.dismiss({
       data: this.data
     });
