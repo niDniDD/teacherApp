@@ -4,41 +4,32 @@
       รายชื่อนักเรียน
     </ion-title>
   </ion-toolbar>
+  <ion-progress-bar type="indeterminate" [hidden]=datasuccess></ion-progress-bar>
 </ion-header>
 
 <ion-content *ngIf="dataclassSchool">
   <ion-row>
-      <ion-searchbar></ion-searchbar>
+    <ion-searchbar></ion-searchbar>
   </ion-row>
   <ion-list>
-      <ion-item>
-  <ion-label>อนุบาล {{dataclassSchool.class}}/{{dataclassSchool.classroom}}</ion-label>
-      </ion-item>
-  
-  <ion-list *ngIf="data && data.datas" >
-    <ion-item *ngFor="let item of data.datas" (click)="list(item)"> 
-      <ion-row style="width: 100vw;"> 
-        <ion-col size="4"  >
+    <ion-item>
+      <ion-label>อนุบาล {{dataclassSchool.class}}/{{dataclassSchool.classroom}}</ion-label>
+    </ion-item>
+    <ion-list *ngIf="datasuccess">
+      <ion-item *ngFor="let item of data.datas" (click)="list(item)">
+        <ion-row style="width: 100vw;">
+          <ion-col size="4">
             <ion-avatar item-start>
-                <img width="30" src="https://cdn.iconscout.com/icon/free/png-256/account-profile-avatar-man-circle-round-user-30452.png">
-              </ion-avatar>
-          
-    </ion-col>
-    <ion-col size="8" >
-      <p>
-         {{item.nametitle}}{{item.firstname}} {{item.lastname}}
-      </p>
-      
-    </ion-col>
-  </ion-row>
-  </ion-item>
- 
+              <img width="30" [src]=item.image>
+            </ion-avatar>
+          </ion-col>
+          <ion-col size="8">
+            <p>
+              {{item.nametitle}}{{item.firstname}} {{item.lastname}}
+            </p>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
   </ion-list>
-    
-  </ion-list>
-  
-  
-  
-  
-  
-  </ion-content>
+</ion-content>

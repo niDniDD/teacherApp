@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ห้องเรียน</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="dataclass">
+    <ion-item *ngFor="let item of dataclass.data.class" (click)="studentList(item)">
+      {{item.classtype}} {{item.class}}/{{item.room}} (จำนวนนักเรียน {{item.count}} คน)
+    </ion-item>
+  </ion-list>
+</ion-content>

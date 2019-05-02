@@ -29,7 +29,7 @@ export class ScorePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getData()
+    this.setData()
   }
 
   backProfile() {
@@ -71,19 +71,13 @@ export class ScorePage implements OnInit {
     }
   }
 
-  async getData() {
-    this.datauser = await this.auth.getUser();
-    var bodyRoom = {
-      citizenid: this.datauser.data.citizenid,
-      school_id: this.datauser.data.schoolid
-    }
-    this.dataclass = await this.studentService.getRoom(bodyRoom)
-    this.dataclass.data.class[0].gradetemplate.subjects.forEach(element => {
+  async setData() {
+    this.data.dataclass.gradetemplate.subjects.forEach(element => {
       element.point = 0
     });
-    this.datascore = this.dataclass.data.class[0].gradetemplate.subjects
-    
+    this.datascore = this.data.dataclass.gradetemplate.subjects
+    console.log(this.data);
   }
-
+  
 }
 
