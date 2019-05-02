@@ -31,13 +31,6 @@ export class ProfileSavePage implements OnInit {
   profile(){
     this.ModalController.dismiss();
   }
-<<<<<<< HEAD
-  success(){
-    
-    this.ModalController.dismiss({
-      data: this.data
-    });
-=======
 
   async success(){
     var newpersonality = {
@@ -55,7 +48,6 @@ export class ProfileSavePage implements OnInit {
       });
     }
     
->>>>>>> 86ae21c9618425f032a40991e342d814223f1e8d
   }
   
 
