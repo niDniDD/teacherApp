@@ -55,8 +55,8 @@ export class Tab1Page {
       this.data = await this.studentService.getStudentById(this.dataclassSchool);
       for (let index = 0; index < this.data.datas.length; index++) {
         const element = this.data.datas[index];
-        const Student:any = await this.studentService.getStudent(element.citizenid)
-        this.data.datas[index].image = Student.data.student.image
+        // const Student:any = await this.studentService.getStudent(element.citizenid)
+        // this.data.datas[index].image = Student.data.student.image
         if(!this.data.datas[index].image){
           this.data.datas[index].image = 'https://cdn.iconscout.com/icon/free/png-256/account-profile-avatar-man-circle-round-user-30452.png'
         }
