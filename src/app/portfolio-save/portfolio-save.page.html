@@ -42,14 +42,14 @@
       <!--  <ion-input placeholder="กรอกรายละเอียดผลงาน" type="text"></ion-input>-->
     </ion-col>
   </ion-row>
+  <ion-row>
+      <ion-slides pager="true">
+        <ion-card-content *ngFor="let item of image">
+          <img [src]="item">
+        </ion-card-content>
+      </ion-slides>
+  </ion-row>
 
-  <ion-card>
-   
-    <ion-card-content *ngFor="let item of image">
-      <img [src]="item" >
-      
-    </ion-card-content>
-  </ion-card>
 </ion-content>
 
 <ion-footer>
