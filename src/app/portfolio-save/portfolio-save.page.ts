@@ -61,7 +61,7 @@ export class PortfolioSavePage implements OnInit {
           if (this.image.length == 0) {
             this.image = []
             this.image.push(uploadImageData)
-          } else {
+          } else { 
             this.image.push(uploadImageData)
 
           }
