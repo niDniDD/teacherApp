@@ -54,6 +54,9 @@ export class PortfolioSavePage implements OnInit {
       outputType: 0
     };
     this.imagePicker.getPictures(options).then((results) => {
+      if (results == 'OK') {
+        results = [];
+      }
       for (var i = 0; i < results.length; i++) {
         let fileUri;
         fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
