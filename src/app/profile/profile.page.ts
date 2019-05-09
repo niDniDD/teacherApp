@@ -10,8 +10,8 @@ import { EditProfilePage } from '../edit-profile/edit-profile.page';
 import { ProfileSavePage } from '../profile-save/profile-save.page';
 import { ProfileComponent } from './profile.component';
 import { StudentService } from '../services/student.service';
-import { AuthService } from '../services/auth/auth.service';
 import { HistoryHeightWeightPage } from '../history-height-weight/history-height-weight.page';
+
 
 
 @Component({
@@ -28,14 +28,14 @@ export class ProfilePage implements OnInit {
     public act: ActivatedRoute,
     public modalcontroller: ModalController,
     public popoverController: PopoverController,
-    public studentService: StudentService,
-    private auth: AuthService
+    public studentService: StudentService
 
   ) { }
 
   ngOnInit() {
     let res: any = this.act.snapshot.paramMap.get('sss');
     this.data = JSON.parse(res)
+    console.log(this.data);
   }
   
   backtab4() {

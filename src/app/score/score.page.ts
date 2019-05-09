@@ -11,10 +11,7 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class ScorePage implements OnInit {
   @Input() data: any;
-  datauser:any;
-  dataclass:any;
   grad:any
-  score:Array<any>=[]
   datascore:any
   totalfullpoint = 0;
   totalpoint = 0;
@@ -55,35 +52,28 @@ export class ScorePage implements OnInit {
     }
     var bodyStudent = {
       citizenid: this.data.citizenid,
-	    class: this.dataclass.data.class[0].class,
-      classroom: this.dataclass.data.class[0].room,
-      classtype: this.dataclass.data.class[0].classtype,
+	    class: this.data.dataclass.class,
+      classroom: this.data.dataclass.room,
+      classtype: this.data.dataclass.classtype,
       grade: this.grad,
-      school_id: this.datauser.data.schoolid,
-      term: this.dataclass.data.term,
-      year: this.dataclass.data.year
+      school_id: this.data.dataclass.dataschool.school_id,
+      term: this.data.dataclass.dataschool.term,
+      year: this.data.dataclass.dataschool.year
     }
-    console.log(bodyStudent)
     const res = await this.studentService.saveGrade(bodyStudent)
-    console.log(res)
     if(res){
+      console.log(res);
       this.modalcontroller.dismiss();
     }
   }
 
   async getData() {
-    this.datauser = await this.auth.getUser();
-    var bodyRoom = {
-      citizenid: this.datauser.data.citizenid,
-      school_id: this.datauser.data.schoolid
-    }
-    this.dataclass = await this.studentService.getRoom(bodyRoom)
-    this.dataclass.data.class[0].gradetemplate.subjects.forEach(element => {
+    this.data.dataclass.gradetemplate.subjects.forEach(element => {
       element.point = 0
     });
-    this.datascore = this.dataclass.data.class[0].gradetemplate.subjects
-    
+    this.datascore = this.data.dataclass.gradetemplate.subjects
+    console.log(this.datascore);
   }
-
+  
 }
 
