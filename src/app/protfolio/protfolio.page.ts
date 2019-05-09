@@ -20,7 +20,6 @@ export class ProtfolioPage implements OnInit {
     public route: NavController,
     public modalcontroller: ModalController,
     public portfolioservice: PortfolioService,
-    private auth : AuthService,
     private studentService: StudentService
   ) { }
 
@@ -29,7 +28,6 @@ export class ProtfolioPage implements OnInit {
     this.getData();
   }
 
-  
   back() {
     this.modalcontroller.dismiss();
   }
@@ -38,29 +36,22 @@ export class ProtfolioPage implements OnInit {
     const modal = await this.modalcontroller.create({
       component: PortfolioSavePage ,
       componentProps: {
-        data: this.data
+        data: this.dataPortfolio
       }
     });
     return await modal.present();
   }
+
   async getData() {
-    this.datauser = await this.auth.getUser();
-    console.log(this.datauser)
-    var bodyRoom = {
-      citizenid: this.datauser.data.citizenid,
-      school_id: this.datauser.data.schoolid
-    }
-    this.dataclass = await this.studentService.getRoom(bodyRoom)
-    console.log(this.dataclass)
     var bodyStudent = {
       citizenid: this.data.citizenid,
-	    class: this.dataclass.data.class[0].class,
-      classroom: this.dataclass.data.class[0].room,
-      classtype: this.dataclass.data.class[0].classtype,
-      school_id: this.datauser.data.schoolid,
+	    class: this.data.dataclass.class,
+      classroom: this.data.dataclass.room,
+      classtype: this.data.dataclass.classtype,
       studentname: this.data.nametitle +this.data.firstname +" " +this.data.lastname,
-      term: this.dataclass.data.term,
-      year: this.dataclass.data.year
+      school_id: this.data.dataclass.dataschool.school_id,
+      term: this.data.dataclass.dataschool.term,
+      year: this.data.dataclass.dataschool.year
     }
     this.dataPortfolio = await this.studentService.getPortfolio(bodyStudent)
     console.log(this.dataPortfolio)

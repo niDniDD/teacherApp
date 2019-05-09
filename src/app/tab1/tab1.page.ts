@@ -35,10 +35,6 @@ export class Tab1Page {
         data: item
       }
     });
-
- 
-    // this.route.navigateForward(['/profile', { sss: JSON.stringify(item) }]);
-
     return await modal.present();
   }
 

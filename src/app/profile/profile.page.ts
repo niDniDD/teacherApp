@@ -33,8 +33,6 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // let res: any = this.act.snapshot.paramMap.get('sss');
-    // this.data = JSON.parse(res)
     console.log(this.data);
   }
   
