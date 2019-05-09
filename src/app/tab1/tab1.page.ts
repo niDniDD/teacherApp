@@ -35,6 +35,7 @@ export class Tab1Page {
   }
 
   async list(item) {
+    item.dataclass = this.dataclass
     this.route.navigateForward(['/profile', { data: JSON.stringify(item) }]);
   }
 
