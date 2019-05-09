@@ -1,4 +1,3 @@
-import { AuthService } from './../services/auth/auth.service';
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { StudentService } from '../services/student.service';
@@ -29,7 +28,10 @@ export class Tab1Page {
   list(item) {
     item.dataclass = this.dataclass
     this.route.navigateForward(['/profile', { sss: JSON.stringify(item) }]);
-    
+  }
+
+  goBack(){
+    this.route.navigateBack('/classroom');
   }
 
   async getData() {

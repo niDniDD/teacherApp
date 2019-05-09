@@ -10,6 +10,7 @@ import { NavController } from '@ionic/angular';
 })
 export class ClassroomPage implements OnInit {
   dataclass: any;
+  datasuccess = false
 
   constructor(
     private auth: AuthService,
@@ -25,7 +26,8 @@ export class ClassroomPage implements OnInit {
     item.dataschool = {
       school_id:this.dataclass.data.school_id,
       term:this.dataclass.data.term,
-      year:this.dataclass.data.year
+      year:this.dataclass.data.year,
+      _id:this.dataclass.data._id
     }
     this.route.navigateForward(['/tabs/tab1', { dataClassroom: JSON.stringify(item) }]);
   }
@@ -39,6 +41,7 @@ export class ClassroomPage implements OnInit {
       }
       const resRoom: any = await this.studentService.getRoom(bodyRoom)
       this.dataclass = resRoom;
+      this.datasuccess = true
     }
   }
 }

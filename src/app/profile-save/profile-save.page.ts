@@ -25,7 +25,6 @@ export class ProfileSavePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data)
   }
 
   profile(){
@@ -39,13 +38,10 @@ export class ProfileSavePage implements OnInit {
         weight : this.weight
     }
     this.data.data.personality.push(newpersonality)
-    console.log(this.data)
     const res = await this.studentService.saveWeightHeight(this.data.data)
     console.log(res)
     if(res){
-      this.ModalController.dismiss({
-        data: res
-      });
+      this.ModalController.dismiss()
     }
     
   }

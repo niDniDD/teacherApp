@@ -22,7 +22,6 @@ export class HistoryHeightWeightPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.data)
     this.getData()
   }
 
@@ -37,35 +36,22 @@ export class HistoryHeightWeightPage implements OnInit {
         data: this.dataWeightHeight
       }
     });
-
     modal.present();
-    const { data } = await modal.onDidDismiss();
-    console.log(data);
   }
 
 
   async getData() {
-    this.datauser = await this.auth.getUser();
-    console.log(this.datauser)
-    var bodyRoom = {
-      citizenid: this.datauser.data.citizenid,
-      school_id: this.datauser.data.schoolid
-    }
-    this.dataclass = await this.studentService.getRoom(bodyRoom)
-    console.log(this.dataclass)
     var bodyStudent = {
       citizenid: this.data.citizenid,
-      class: this.dataclass.data.class[0].class,
-      classroom: this.dataclass.data.class[0].room,
-      classtype: this.dataclass.data.class[0].classtype,
-      school_id: this.datauser.data.schoolid,
+      class: this.data.dataclass.class,
+      classroom: this.data.dataclass.room,
+      classtype: this.data.dataclass.classtype,
+      school_id: this.data.dataclass.dataschool.school_id,
       studentname: this.data.nametitle + this.data.firstname + " " + this.data.lastname,
-      term: this.dataclass.data.term,
-      year: this.dataclass.data.year
+      term: this.data.dataclass.dataschool.term,
+      year: this.data.dataclass.dataschool.year
     }
     this.dataWeightHeight = await this.studentService.getWeightHeight(bodyStudent)
     console.log(this.dataWeightHeight)
   }
-
-  
 }
