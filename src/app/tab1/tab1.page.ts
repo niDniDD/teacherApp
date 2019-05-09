@@ -22,23 +22,25 @@ export class Tab1Page {
   ) {}
   
   ngOnInit() {
-    let res: any = this.act.snapshot.paramMap.get('dataClassroom');
-    this.dataclass = JSON.parse(res)
-    this.getData()
+    if(!localStorage.getItem('@dataClass')){
+      let res:any = this.act.snapshot.paramMap.get('dataClassroom');
+      this.dataclass = JSON.parse(res)
+      localStorage.setItem('@dataClass', JSON.stringify(this.dataclass));
+      this.getData()
+    }else{
+      const res:any = localStorage.getItem('@dataClass');
+      this.dataclass = JSON.parse(res)
+      this.getData()
+    }
   }
 
   async list(item) {
     item.dataclass = this.dataclass
-    const modal = await this.modalcontroller.create({
-      component: ProfilePage,
-      componentProps: {
-        data: item
-      }
-    });
-    return await modal.present();
+    this.route.navigateForward(['/profile', { data: JSON.stringify(item) }]);
   }
 
   goBack(){
+    localStorage.removeItem('@dataClass');
     this.route.navigateBack('/classroom');
   }
 

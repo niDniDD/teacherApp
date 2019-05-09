@@ -33,11 +33,13 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    let res:any = this.act.snapshot.paramMap.get('data');
+      this.data = JSON.parse(res)
     console.log(this.data);
   }
   
    backtab4() {
-    this.modalcontroller.dismiss();
+    this.route.navigateBack('/tabs/tab1');
   }
   
 
