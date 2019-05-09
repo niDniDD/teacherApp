@@ -19,6 +19,7 @@ export class ClassroomPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    localStorage.removeItem('@dataClass');
     this.getData()
   }
 
