@@ -43,9 +43,9 @@
     </ion-col>
   </ion-row>
   <ion-row>
-      <ion-slides pager="true" loop="true">
+      <ion-slides pager="true">
         <ion-slide *ngFor="let item of image">
-          <img [src]="item">
+          <img class="img-style" [src]="item">
         </ion-slide>
       </ion-slides>
   </ion-row>
