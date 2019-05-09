@@ -12,6 +12,8 @@ export class SigninPage implements OnInit {
   username: any = '';
   password: any = '';
   token:any
+  loading = true
+  message:any
 
   constructor(private auth: AuthService,
     public route: NavController) { }
@@ -24,6 +26,8 @@ export class SigninPage implements OnInit {
   }
 
   async signin() {
+    this.loading = false
+    this.message = ""
     try {
     var body = {
       username: this.username,
@@ -37,6 +41,8 @@ export class SigninPage implements OnInit {
     }
   }
   catch (error) {
+    this.loading = true
+    this.message = "เข้าสู่ระบบไม่สำเร็จ ตรวจสอบผู้ใช้งานและรหัสผ่าน"
     throw error
   }
 
