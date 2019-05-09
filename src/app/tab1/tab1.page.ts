@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 import { StudentService } from '../services/student.service';
 import { ActivatedRoute } from '@angular/router';
+import { ProfilePage } from '../profile/profile.page';
 
 @Component({
   selector: 'app-tab1',
@@ -16,7 +17,8 @@ export class Tab1Page {
   
   constructor(public studentService: StudentService,
     public route: NavController,
-    public act: ActivatedRoute
+    public act: ActivatedRoute,
+    public modalcontroller: ModalController,
   ) {}
   
   ngOnInit() {
@@ -25,9 +27,19 @@ export class Tab1Page {
     this.getData()
   }
 
-  list(item) {
+  async list(item) {
     item.dataclass = this.dataclass
-    this.route.navigateForward(['/profile', { sss: JSON.stringify(item) }]);
+    const modal = await this.modalcontroller.create({
+      component: ProfilePage,
+      componentProps: {
+        data: item
+      }
+    });
+
+ 
+    // this.route.navigateForward(['/profile', { sss: JSON.stringify(item) }]);
+
+    return await modal.present();
   }
 
   goBack(){
