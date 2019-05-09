@@ -1,3 +1,5 @@
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 import { PortfolioSavePageModule } from './portfolio-save/portfolio-save.module';
 import { ProfilePageModule } from './profile/profile.module';
 import { ProtfolioPageModule } from './protfolio/protfolio.module';
@@ -32,6 +34,8 @@ import { ProfileComponent } from './profile/profile.component';
 
 
   providers: [
+    Camera,
+    ImagePicker,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },

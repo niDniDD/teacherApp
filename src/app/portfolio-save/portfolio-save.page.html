@@ -42,4 +42,24 @@
       <!--  <ion-input placeholder="กรอกรายละเอียดผลงาน" type="text"></ion-input>-->
     </ion-col>
    </ion-row>
+
+   <ion-card>
+     <ion-card-header>
+       รูปภาพ
+     </ion-card-header>
+     <ion-card-content *ngFor="">
+       
+     </ion-card-content>
+   </ion-card>
 </ion-content>
+
+<ion-footer>
+  <ion-row>
+    <ion-col size="6" (click)="onImage()">
+          <ion-icon class="gallory" size="large" name="photos"></ion-icon>
+      </ion-col>
+  <ion-col size="6" (click)="onCamera()">
+      <ion-icon  class="camera" size="large"  name="camera"></ion-icon>
+  </ion-col>
+</ion-row>
+</ion-footer>
