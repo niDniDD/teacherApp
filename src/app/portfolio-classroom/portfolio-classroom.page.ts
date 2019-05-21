@@ -41,8 +41,8 @@ export class PortfolioClassroomPage implements OnInit {
     this.route.navigateBack('/classroom');
   }
 
-  gallery(item){
-    this.route.navigateForward(['/gallery', { data: JSON.stringify(item) }]);
+  gallery(item) {
+    this.route.navigateForward(['/gallery', { data: JSON.stringify(item), dataClass: JSON.stringify(this.dataclass) }]);
   }
 
   async presentActionSheet(item) {
@@ -95,7 +95,7 @@ export class PortfolioClassroomPage implements OnInit {
           class: item.class,
           classroom: item.classroom,
           classtype: item.classtype,
-          date: this.data,
+          date: this.date,
           detail: '',
           images: uploadImageData,
           school_id: this.dataclass.dataschool.school_id,
@@ -106,34 +106,37 @@ export class PortfolioClassroomPage implements OnInit {
           year: this.dataclass.dataschool.year
         }
 
-        // if (uploadImageData) {
-        //   let dataStudent = {
-        //     citizenid: item.citizenid,
-        //     class: item.class,
-        //     classroom: item.classroom,
-        //     classtype: item.classtype,
-        //     school_id: this.dataclass.dataschool.school_id,
-        //     studentname: item.nametitle + item.firstname + item.lastname,
-        //     term: this.dataclass.dataschool.term,
-        //     year: this.dataclass.dataschool.year
-        //   }
-        //   let resP = await this.studentService.getPortfolio(dataStudent)
-        //   this.dataStudent = resP
-        //   if (this.dataStudent.data.items.length === 0) {
-        //     let res = await this.studentService.uploadPortfolio(data)
-        //   } else {
-        //     let data2 = {
-        //       date: this.data,
-        //       detail: " ",
-        //       images: uploadImageData,
-        //       school_id: this.dataclass.dataschool.school_id,
-        //       title: " ",
-        //       videos: []
-        //     }
-        //     let res = await this.studentService.updatePortfolio(item._id, data2)
-        //   }
-        // }
-        alert(JSON.stringify(data) )
+   
+        let dataStudent = {
+          citizenid: item.citizenid,
+          class: item.class,
+          classroom: item.classroom,
+          classtype: item.classtype,
+          school_id: this.dataclass.dataschool.school_id,
+          studentname: item.nametitle + item.firstname + item.lastname,
+          term: this.dataclass.dataschool.term,
+          year: this.dataclass.dataschool.year
+        }
+        let resP = await this.studentService.getPortfolio(dataStudent)
+        this.dataStudent = resP
+        alert(JSON.stringify(resP))
+        alert(JSON.stringify(this.dataStudent.data.items.length))
+        if (this.dataStudent.data.items.length <= 0) {
+          let res = await this.studentService.uploadPortfolio(data)
+          alert(res)
+        } else {
+          let data2 = {
+            date: this.date,
+            detail: " ",
+            images: uploadImageData,
+            school_id: this.dataclass.dataschool.school_id,
+            title: " ",
+            videos: []
+          }
+          let res = await this.studentService.updatePortfolio(item._id, data2)
+     
+        }
+        alert(JSON.stringify(data))
         this.image.push(uploadImageData);
       }, (uploadImageError) => {
         // console.log(uploadImageError);
@@ -165,7 +168,7 @@ export class PortfolioClassroomPage implements OnInit {
             class: item.class,
             classroom: item.classroom,
             classtype: item.classtype,
-            date: this.data,
+            date: this.date,
             detail: '',
             images: this.image,
             school_id: this.dataclass.dataschool.school_id,
@@ -176,31 +179,31 @@ export class PortfolioClassroomPage implements OnInit {
             year: this.dataclass.dataschool.year
           }
           // if (uploadImageData) {
-          //   let dataStudent = {
-          //     citizenid: item.citizenid,
-          //     class: item.class,
-          //     classroom: item.classroom,
-          //     classtype: item.classtype,
-          //     school_id: this.dataclass.dataschool.school_id,
-          //     studentname: item.nametitle + item.firstname + item.lastname,
-          //     term: this.dataclass.dataschool.term,
-          //     year: this.dataclass.dataschool.year
-          //   }
-          //   let resP = await this.studentService.getPortfolio(dataStudent)
-          //   this.dataStudent = resP
-          //   if (this.dataStudent.data.items.length === 0) {
-          //     let res = await this.studentService.uploadPortfolio(data)
-          //   } else {
-          //     let data2 = {
-          //       date: this.data,
-          //       detail: " ",
-          //       images: uploadImageData,
-          //       school_id: this.dataclass.dataschool.school_id,
-          //       title: " ",
-          //       videos: []
-          //     }
-          //     let res = await this.studentService.updatePortfolio(item._id, data2)
-          //   }
+          let dataStudent = {
+            citizenid: item.citizenid,
+            class: item.class,
+            classroom: item.classroom,
+            classtype: item.classtype,
+            school_id: this.dataclass.dataschool.school_id,
+            studentname: item.nametitle + item.firstname + item.lastname,
+            term: this.dataclass.dataschool.term,
+            year: this.dataclass.dataschool.year
+          }
+          let resP = await this.studentService.getPortfolio(dataStudent)
+          this.dataStudent = resP
+          if (this.dataStudent.data.items.length <= 0) {
+            let res = await this.studentService.uploadPortfolio(data)
+          } else {
+            let data2 = {
+              date: this.date,
+              detail: " ",
+              images: uploadImageData,
+              school_id: this.dataclass.dataschool.school_id,
+              title: " ",
+              videos: []
+            }
+            let res = await this.studentService.updatePortfolio(item._id, data2)
+          }
           // }
           alert(JSON.stringify(data))
 

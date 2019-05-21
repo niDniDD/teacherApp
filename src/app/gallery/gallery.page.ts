@@ -8,10 +8,19 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./gallery.page.scss'],
 })
 export class GalleryPage implements OnInit {
-  data:any
+  data: any
   gallery: any = [
     {
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2Ea88m8fQj2NsfHf8wei-pwIB3GJhXB8TLLphOomKRB1mykR'
+      image: 'http://1.bp.blogspot.com/-9Tx8hQaDS0o/Te5PDeWhqoI/AAAAAAAAAaA/wNdLruz18i8/s1600/kitty-cu.gif'
+    },
+    {
+      image: 'https://i.ytimg.com/vi/PU6vyUuNobs/maxresdefault.jpg'
+    },
+    {
+      image: 'https://i.ytimg.com/vi/T8n100YxNJg/maxresdefault.jpg'
+    },
+    {
+      image:'https://i.ytimg.com/vi/Tv9vtj2ntLw/maxresdefault.jpg'
     }
   ]
   datasuccess = true
@@ -22,14 +31,14 @@ export class GalleryPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-    let res:any = this.act.snapshot.paramMap.get('data');
+    let res: any = this.act.snapshot.paramMap.get('data');
     this.data = await JSON.parse(res)
     console.log(this.data);
   }
 
-  viewer(image) {
-    console.log(image);
-    this.photoViewer.show('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2Ea88m8fQj2NsfHf8wei-pwIB3GJhXB8TLLphOomKRB1mykR');
+  viewer(image: string) {
+    // console.log(image);
+    this.photoViewer.show(image, '', { share: false });
   }
 
 }
