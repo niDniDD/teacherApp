@@ -24,6 +24,7 @@ import { PortfolioService } from './services/portfolio/portfolio.service';
 import { HistoryHeightWeightPageModule } from './history-height-weight/history-height-weight.module';
 import { HistoryPortfolioPageModule } from './history-portfolio/history-portfolio.module';
 import { ProfileComponent } from './profile/profile.component';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 
 
@@ -38,6 +39,7 @@ import { ProfileComponent } from './profile/profile.component';
     ImagePicker,
     StatusBar,
     SplashScreen,
+    PhotoViewer,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     StudentService,
     ScoreService,EvoserviceService,PortfolioService
