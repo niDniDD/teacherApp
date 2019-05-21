@@ -13,7 +13,7 @@ export class Tab1Page {
   data: any;
   dataclass: any;
   dataclassSchool:any;
-  datasuccess = false
+  datasuccess = false 
   
   constructor(public studentService: StudentService,
     public route: NavController,
