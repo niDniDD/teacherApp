@@ -122,6 +122,8 @@ export class PortfolioClassroomPage implements OnInit {
         this.dataStudent = resP
         alert(JSON.stringify(resP))
         alert(JSON.stringify(this.dataStudent.data.items.length))
+        alert(JSON.stringify('idNajaP:'+item._id))
+
         if (this.dataStudent.data.items.length <= 0) {
           let res = await this.studentService.uploadPortfolio(data)
           alert(JSON.stringify(res))
@@ -136,6 +138,8 @@ export class PortfolioClassroomPage implements OnInit {
             title: " ",
             videos: []
           }
+          alert(JSON.stringify(data2))
+          alert(JSON.stringify(item._id))
           let res = await this.studentService.updatePortfolio(item._id, data2)
 
         }
