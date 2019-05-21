@@ -17,13 +17,13 @@ export class AppComponent {
   ) {
     this.initializeApp();
     var config = {
-      apiKey: "AIzaSyC978lAlEHKICOTKfl0J3qp8xQOQh5l8nY",
-      authDomain: "cameratest-abd6f.firebaseapp.com",
-      databaseURL: "https://cameratest-abd6f.firebaseio.com",
-      projectId: "cameratest-abd6f",
-      storageBucket: "cameratest-abd6f.appspot.com",
-      messagingSenderId: "830033807678"
-    };
+      apiKey: "AIzaSyCanMutez3Coe6Yg4oEhEgzMK3iHEXauz0",
+      authDomain: "school-hub-37d55.firebaseapp.com",
+      databaseURL: "https://school-hub-37d55.firebaseio.com",
+      projectId: "school-hub-37d55",
+      storageBucket: "school-hub-37d55.appspot.com",
+      messagingSenderId: "116012923728"
+    };git
     firebase.initializeApp(config);
   }
 
