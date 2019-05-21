@@ -58,6 +58,6 @@ export class StudentService {
     return this.httpclient.post(environment.apiUrl + '/api/portfolio', body, { headers: this.authorizationHeader() }).toPromise();
   }
   updatePortfolio(id, body) {
-    return this.httpclient.put(environment.apiUrl + '/api/portfolio' + id, body, { headers: this.authorizationHeader() }).toPromise();
+    return this.httpclient.put(environment.apiUrl + '/api/portfolio/' + id, body, { headers: this.authorizationHeader() }).toPromise();
   }
 }

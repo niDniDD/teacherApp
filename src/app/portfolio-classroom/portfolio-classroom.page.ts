@@ -119,6 +119,7 @@ export class PortfolioClassroomPage implements OnInit {
         }
         let resP = await this.studentService.getPortfolio(dataStudent)
         this.dataStudent = resP
+        alert(JSON.stringify(this.dataStudent.data.items.length))
         if (this.dataStudent.data.items.length <= 0) {
           let res = await this.studentService.uploadPortfolio(data)
           alert(res)
