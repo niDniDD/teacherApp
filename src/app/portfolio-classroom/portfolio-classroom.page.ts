@@ -41,6 +41,10 @@ export class PortfolioClassroomPage implements OnInit {
     this.route.navigateBack('/classroom');
   }
 
+  gallery(item){
+    this.route.navigateForward(['/gallery', { data: JSON.stringify(item) }]);
+  }
+
   async presentActionSheet(item) {
     console.log(item);
     const actionSheet = await this.actionSheetController.create({
