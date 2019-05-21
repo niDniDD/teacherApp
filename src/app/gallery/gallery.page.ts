@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./gallery.page.scss'],
 })
 export class GalleryPage implements OnInit {
-  data:any
+  data: any
   gallery: any = [
     {
       image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2Ea88m8fQj2NsfHf8wei-pwIB3GJhXB8TLLphOomKRB1mykR'
@@ -22,14 +22,14 @@ export class GalleryPage implements OnInit {
   ) { }
 
   async ngOnInit() {
-    let res:any = this.act.snapshot.paramMap.get('data');
+    let res: any = this.act.snapshot.paramMap.get('data');
     this.data = await JSON.parse(res)
     console.log(this.data);
   }
 
-  viewer(image:string) {
+  viewer(image: string) {
     // console.log(image);
-    this.photoViewer.show('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2Ea88m8fQj2NsfHf8wei-pwIB3GJhXB8TLLphOomKRB1mykR');
+    this.photoViewer.show(image, '', { share: false });
   }
 
 }
