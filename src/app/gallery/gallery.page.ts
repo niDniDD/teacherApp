@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-gallery',
@@ -27,7 +28,8 @@ export class GalleryPage implements OnInit {
 
   constructor(
     private photoViewer: PhotoViewer,
-    public act: ActivatedRoute
+    public act: ActivatedRoute,
+    public route: NavController,
   ) { }
 
   async ngOnInit() {
@@ -39,6 +41,10 @@ export class GalleryPage implements OnInit {
   viewer(image: string) {
     // console.log(image);
     this.photoViewer.show(image, '', { share: false });
+  }
+
+  goBack() {
+    this.route.navigateBack('/portfolio-classroom');
   }
 
 }

@@ -31,7 +31,8 @@ export class PortfolioClassroomPage implements OnInit {
 
 
   ngOnInit() {
-    let res: any = this.act.snapshot.paramMap.get('dataClassroom');
+    // let res: any = this.act.snapshot.paramMap.get('dataClassroom');
+    let res: any = window.localStorage.getItem('classroom')
     this.dataclass = JSON.parse(res)
     console.log(this.dataclass);
     this.getData()
@@ -106,7 +107,6 @@ export class PortfolioClassroomPage implements OnInit {
           videos: [],
           year: this.dataclass.dataschool.year
         }
-
 
         let dataStudent = {
           citizenid: item.citizenid,
