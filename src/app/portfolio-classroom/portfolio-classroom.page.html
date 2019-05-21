@@ -6,7 +6,7 @@
         </ion-col>
         <ion-col>
           <ion-title class="title">
-            เพื่มแฟ้มผลงานห้อง 
+            เพื่มแฟ้มผลงานห้อง{{dataclass.classtype}} {{dataclass.class}}/{{dataclass.room}}
           </ion-title>
         </ion-col>
       </ion-row>
@@ -20,8 +20,8 @@
       <ion-col size="6" class="title" *ngFor="let item of data.datas">
         <ion-card>
           <ion-slides>
-            <ion-slide>
-                <img class="img-style"  (click)="gallery(item)" src="http://pandulogistics.com/content/gallery/default_photo.png">
+            <ion-slide class="card">
+                <img class="img-style" (click)="gallery(item)" src="http://pandulogistics.com/content/gallery/default_photo.png">
             </ion-slide>
           </ion-slides>
           <ion-fab vertical="top" horizontal="end" slot="fixed">
