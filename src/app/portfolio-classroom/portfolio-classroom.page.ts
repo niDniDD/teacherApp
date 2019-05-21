@@ -126,7 +126,7 @@ export class PortfolioClassroomPage implements OnInit {
           let res = await this.studentService.uploadPortfolio(data)
           alert(res)
         } else {
-          let get: any = await this.studentService.getPortfolio2(item._id);
+          let get: any = await this.studentService.getPortfolio2(this.dataStudent.data.items[0]._id);
           get.data.images.push(uploadImageData)
           let data2 = {
             date: this.date,
@@ -136,7 +136,7 @@ export class PortfolioClassroomPage implements OnInit {
             title: " ",
             videos: []
           }
-          let res = await this.studentService.updatePortfolio(item._id, data2)
+          let res = await this.studentService.updatePortfolio(this.dataStudent.data.items[0]._id, data2)
 
         }
         alert(JSON.stringify(data))
