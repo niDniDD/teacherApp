@@ -21,15 +21,12 @@
         <ion-card>
           <ion-slides>
             <ion-slide>
-                <img class="img-style"  src="http://pandulogistics.com/content/gallery/default_photo.png">
+                <img class="img-style"  (click)="gallery(item)" src="http://pandulogistics.com/content/gallery/default_photo.png">
             </ion-slide>
           </ion-slides>
           <ion-fab vertical="top" horizontal="end" slot="fixed">
               <ion-fab-button class="fab" (click)="presentActionSheet(item)">
                 <ion-icon name="add-circle-outline"></ion-icon>
-              </ion-fab-button>
-              <ion-fab-button class="fab">
-                <ion-icon name="images"></ion-icon>
               </ion-fab-button>
             </ion-fab>
         </ion-card>
