@@ -23,7 +23,7 @@ export class AppComponent {
       projectId: "school-hub-37d55",
       storageBucket: "school-hub-37d55.appspot.com",
       messagingSenderId: "116012923728"
-    };git
+    };
     firebase.initializeApp(config);
   }
 
