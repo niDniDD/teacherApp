@@ -19,6 +19,7 @@ export class PortfolioClassroomPage implements OnInit {
   datasuccess = false;
   date: Date;
   dataStudent: any;
+  dataImage: any;
   constructor(
     public act: ActivatedRoute,
     public route: NavController,
@@ -125,10 +126,12 @@ export class PortfolioClassroomPage implements OnInit {
           let res = await this.studentService.uploadPortfolio(data)
           alert(res)
         } else {
+          let get: any = await this.studentService.getPortfolio2(item._id);
+          get.data.images.push(uploadImageData)
           let data2 = {
             date: this.date,
             detail: " ",
-            images: uploadImageData,
+            images: get.data.images,
             school_id: this.dataclass.dataschool.school_id,
             title: " ",
             videos: []
@@ -194,8 +197,7 @@ export class PortfolioClassroomPage implements OnInit {
           if (this.dataStudent.data.items.length <= 0) {
             let res = await this.studentService.uploadPortfolio(data)
           } else {
-            let get: any = await this.studentService.getPortfolio2(item._id);
-            alert(JSON.stringify(get))
+
             let data2 = {
               date: this.date,
               detail: " ",
