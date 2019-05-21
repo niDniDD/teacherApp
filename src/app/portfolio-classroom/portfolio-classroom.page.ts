@@ -18,6 +18,7 @@ export class PortfolioClassroomPage implements OnInit {
   dataclassSchool: any;
   datasuccess = false;
   date: any;
+  dataStudent: any;
   constructor(
     public act: ActivatedRoute,
     public route: NavController,
@@ -100,7 +101,35 @@ export class PortfolioClassroomPage implements OnInit {
           videos: [],
           year: this.dataclass.dataschool.year
         }
-        alert(data)
+
+        // if (uploadImageData) {
+        //   let dataStudent = {
+        //     citizenid: item.citizenid,
+        //     class: item.class,
+        //     classroom: item.classroom,
+        //     classtype: item.classtype,
+        //     school_id: this.dataclass.dataschool.school_id,
+        //     studentname: item.nametitle + item.firstname + item.lastname,
+        //     term: this.dataclass.dataschool.term,
+        //     year: this.dataclass.dataschool.year
+        //   }
+        //   let resP = await this.studentService.getPortfolio(dataStudent)
+        //   this.dataStudent = resP
+        //   if (this.dataStudent.data.items.length === 0) {
+        //     let res = await this.studentService.uploadPortfolio(data)
+        //   } else {
+        //     let data2 = {
+        //       date: this.data,
+        //       detail: " ",
+        //       images: uploadImageData,
+        //       school_id: this.dataclass.dataschool.school_id,
+        //       title: " ",
+        //       videos: []
+        //     }
+        //     let res = await this.studentService.updatePortfolio(item._id, data2)
+        //   }
+        // }
+        alert(JSON.stringify(data) )
         this.image.push(uploadImageData);
       }, (uploadImageError) => {
         // console.log(uploadImageError);
@@ -125,7 +154,7 @@ export class PortfolioClassroomPage implements OnInit {
       for (var i = 0; i < results.length; i++) {
         let fileUri;
         fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
-        this.uploadImage(fileUri).then((uploadImageData) => {
+        this.uploadImage(fileUri).then(async (uploadImageData) => {
           this.image.push(uploadImageData)
           let data = {
             citizenid: item.citizenid,
@@ -142,7 +171,34 @@ export class PortfolioClassroomPage implements OnInit {
             videos: [],
             year: this.dataclass.dataschool.year
           }
-          alert(data)
+          // if (uploadImageData) {
+          //   let dataStudent = {
+          //     citizenid: item.citizenid,
+          //     class: item.class,
+          //     classroom: item.classroom,
+          //     classtype: item.classtype,
+          //     school_id: this.dataclass.dataschool.school_id,
+          //     studentname: item.nametitle + item.firstname + item.lastname,
+          //     term: this.dataclass.dataschool.term,
+          //     year: this.dataclass.dataschool.year
+          //   }
+          //   let resP = await this.studentService.getPortfolio(dataStudent)
+          //   this.dataStudent = resP
+          //   if (this.dataStudent.data.items.length === 0) {
+          //     let res = await this.studentService.uploadPortfolio(data)
+          //   } else {
+          //     let data2 = {
+          //       date: this.data,
+          //       detail: " ",
+          //       images: uploadImageData,
+          //       school_id: this.dataclass.dataschool.school_id,
+          //       title: " ",
+          //       videos: []
+          //     }
+          //     let res = await this.studentService.updatePortfolio(item._id, data2)
+          //   }
+          // }
+          alert(JSON.stringify(data))
 
           if (this.image.length === results.length) {
           }

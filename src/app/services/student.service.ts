@@ -27,32 +27,37 @@ export class StudentService {
     return this.httpclient.get('../assets/student.json').toPromise();
   }
 
-  getStudent(citizenid){
-    return this.httpclient.get(environment.apiUrl + '/api/student-detail/'+citizenid, { headers: this.authorizationHeader() }).toPromise();
+  getStudent(citizenid) {
+    return this.httpclient.get(environment.apiUrl + '/api/student-detail/' + citizenid, { headers: this.authorizationHeader() }).toPromise();
   }
 
-  getRoom(body){
-    return this.httpclient.post(environment.apiUrl + '/api/staff-getroom', body, { headers: this.authorizationHeader()}).toPromise();
+  getRoom(body) {
+    return this.httpclient.post(environment.apiUrl + '/api/staff-getroom', body, { headers: this.authorizationHeader() }).toPromise();
   }
 
-  getWeightHeight(body){
-    return this.httpclient.post(environment.apiUrl + '/api/education-personality', body, { headers: this.authorizationHeader()}).toPromise();
+  getWeightHeight(body) {
+    return this.httpclient.post(environment.apiUrl + '/api/education-personality', body, { headers: this.authorizationHeader() }).toPromise();
   }
 
-  getDevelopment(body){
-    return this.httpclient.post(environment.apiUrl + '/api/get-education-development', body, { headers: this.authorizationHeader()}).toPromise();
+  getDevelopment(body) {
+    return this.httpclient.post(environment.apiUrl + '/api/get-education-development', body, { headers: this.authorizationHeader() }).toPromise();
   }
 
-  saveWeightHeight(body){
-    return this.httpclient.post(environment.apiUrl + '/api/education-savepersonality', body, { headers: this.authorizationHeader()}).toPromise();
+  saveWeightHeight(body) {
+    return this.httpclient.post(environment.apiUrl + '/api/education-savepersonality', body, { headers: this.authorizationHeader() }).toPromise();
   }
 
-  saveGrade(body){
-    return this.httpclient.post(environment.apiUrl + '/api/education-savegrade', body, { headers: this.authorizationHeader()}).toPromise();
+  saveGrade(body) {
+    return this.httpclient.post(environment.apiUrl + '/api/education-savegrade', body, { headers: this.authorizationHeader() }).toPromise();
   }
 
-  saveDevelopment(body){
-    return this.httpclient.post(environment.apiUrl + '/api/save-development', body, { headers: this.authorizationHeader()}).toPromise();
+  saveDevelopment(body) {
+    return this.httpclient.post(environment.apiUrl + '/api/save-development', body, { headers: this.authorizationHeader() }).toPromise();
   }
-
+  uploadPortfolio(body) {
+    return this.httpclient.post(environment.apiUrl + '/api/portfolio', body, { headers: this.authorizationHeader() }).toPromise();
+  }
+  updatePortfolio(id, body) {
+    return this.httpclient.put(environment.apiUrl + '/api/portfolio' + id, body, { headers: this.authorizationHeader() }).toPromise();
+  }
 }
