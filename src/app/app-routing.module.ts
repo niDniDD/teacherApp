@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'history-portfolio', loadChildren: './history-portfolio/history-portfolio.module#HistoryPortfolioPageModule' },
   { path: 'history-height-weight', loadChildren: './history-height-weight/history-height-weight.module#HistoryHeightWeightPageModule' },
   { path: 'signin', loadChildren: './signin/signin.module#SigninPageModule' },
-  { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomPageModule' }
+  { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomPageModule' },
+  { path: 'gallery', loadChildren: './gallery/gallery.module#GalleryPageModule' }
 
 
 
