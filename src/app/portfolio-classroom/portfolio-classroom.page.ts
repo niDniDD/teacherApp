@@ -30,7 +30,8 @@ export class PortfolioClassroomPage implements OnInit {
 
 
   ngOnInit() {
-    let res: any = this.act.snapshot.paramMap.get('dataClassroom');
+    // let res: any = this.act.snapshot.paramMap.get('dataClassroom');
+    let res: any = window.localStorage.getItem('classroom')
     this.dataclass = JSON.parse(res)
     console.log(this.dataclass);
     this.getData()
@@ -107,30 +108,30 @@ export class PortfolioClassroomPage implements OnInit {
         }
 
         // if (uploadImageData) {
-          let dataStudent = {
-            citizenid: item.citizenid,
-            class: item.class,
-            classroom: item.classroom,
-            classtype: item.classtype,
+        let dataStudent = {
+          citizenid: item.citizenid,
+          class: item.class,
+          classroom: item.classroom,
+          classtype: item.classtype,
+          school_id: this.dataclass.dataschool.school_id,
+          studentname: item.nametitle + item.firstname + item.lastname,
+          term: this.dataclass.dataschool.term,
+          year: this.dataclass.dataschool.year
+        }
+        let resP = await this.studentService.getPortfolio(dataStudent)
+        this.dataStudent = resP
+        if (this.dataStudent.data.items.length === 0) {
+          let res = await this.studentService.uploadPortfolio(data)
+        } else {
+          let data2 = {
+            date: this.date,
+            detail: " ",
+            images: uploadImageData,
             school_id: this.dataclass.dataschool.school_id,
-            studentname: item.nametitle + item.firstname + item.lastname,
-            term: this.dataclass.dataschool.term,
-            year: this.dataclass.dataschool.year
+            title: " ",
+            videos: []
           }
-          let resP = await this.studentService.getPortfolio(dataStudent)
-          this.dataStudent = resP
-          if (this.dataStudent.data.items.length === 0) {
-            let res = await this.studentService.uploadPortfolio(data)
-          } else {
-            let data2 = {
-              date: this.date,
-              detail: " ",
-              images: uploadImageData,
-              school_id: this.dataclass.dataschool.school_id,
-              title: " ",
-              videos: []
-            }
-            let res = await this.studentService.updatePortfolio(item._id, data2)
+          let res = await this.studentService.updatePortfolio(item._id, data2)
           // }
         }
         alert(JSON.stringify(data))
@@ -176,31 +177,31 @@ export class PortfolioClassroomPage implements OnInit {
             year: this.dataclass.dataschool.year
           }
           // if (uploadImageData) {
-            let dataStudent = {
-              citizenid: item.citizenid,
-              class: item.class,
-              classroom: item.classroom,
-              classtype: item.classtype,
+          let dataStudent = {
+            citizenid: item.citizenid,
+            class: item.class,
+            classroom: item.classroom,
+            classtype: item.classtype,
+            school_id: this.dataclass.dataschool.school_id,
+            studentname: item.nametitle + item.firstname + item.lastname,
+            term: this.dataclass.dataschool.term,
+            year: this.dataclass.dataschool.year
+          }
+          let resP = await this.studentService.getPortfolio(dataStudent)
+          this.dataStudent = resP
+          if (this.dataStudent.data.items.length === 0) {
+            let res = await this.studentService.uploadPortfolio(data)
+          } else {
+            let data2 = {
+              date: this.date,
+              detail: " ",
+              images: uploadImageData,
               school_id: this.dataclass.dataschool.school_id,
-              studentname: item.nametitle + item.firstname + item.lastname,
-              term: this.dataclass.dataschool.term,
-              year: this.dataclass.dataschool.year
+              title: " ",
+              videos: []
             }
-            let resP = await this.studentService.getPortfolio(dataStudent)
-            this.dataStudent = resP
-            if (this.dataStudent.data.items.length === 0) {
-              let res = await this.studentService.uploadPortfolio(data)
-            } else {
-              let data2 = {
-                date: this.date,
-                detail: " ",
-                images: uploadImageData,
-                school_id: this.dataclass.dataschool.school_id,
-                title: " ",
-                videos: []
-              }
-              let res = await this.studentService.updatePortfolio(item._id, data2)
-            }
+            let res = await this.studentService.updatePortfolio(item._id, data2)
+          }
           // }
           alert(JSON.stringify(data))
 
