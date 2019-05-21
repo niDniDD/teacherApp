@@ -27,8 +27,8 @@ export class GalleryPage implements OnInit {
     console.log(this.data);
   }
 
-  viewer(image) {
-    console.log(image);
+  viewer(image:string) {
+    // console.log(image);
     this.photoViewer.show('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTt2Ea88m8fQj2NsfHf8wei-pwIB3GJhXB8TLLphOomKRB1mykR');
   }
 
