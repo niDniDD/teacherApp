@@ -45,4 +45,14 @@ export class ClassroomPage implements OnInit {
       this.datasuccess = true
     }
   }
+
+  portfolioClassroom(item){
+    item.dataschool = {
+      school_id:this.dataclass.data.school_id,
+      term:this.dataclass.data.term,
+      year:this.dataclass.data.year,
+      _id:this.dataclass.data._id
+    }
+    this.route.navigateForward(['/portfolio-classroom', { dataClassroom: JSON.stringify(item) }]);
+  }
 }
