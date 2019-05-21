@@ -96,7 +96,7 @@ export class PortfolioClassroomPage implements OnInit {
           class: item.class,
           classroom: item.classroom,
           classtype: item.classtype,
-          date: this.data,
+          date: this.date,
           detail: '',
           images: uploadImageData,
           school_id: this.dataclass.dataschool.school_id,
@@ -107,7 +107,6 @@ export class PortfolioClassroomPage implements OnInit {
           year: this.dataclass.dataschool.year
         }
 
-        // if (uploadImageData) {
         let dataStudent = {
           citizenid: item.citizenid,
           class: item.class,
@@ -120,8 +119,11 @@ export class PortfolioClassroomPage implements OnInit {
         }
         let resP = await this.studentService.getPortfolio(dataStudent)
         this.dataStudent = resP
-        if (this.dataStudent.data.items.length === 0) {
+        alert(JSON.stringify(resP))
+        alert(JSON.stringify(this.dataStudent.data.items.length))
+        if (this.dataStudent.data.items.length <= 0) {
           let res = await this.studentService.uploadPortfolio(data)
+          alert(res)
         } else {
           let data2 = {
             date: this.date,
@@ -132,7 +134,7 @@ export class PortfolioClassroomPage implements OnInit {
             videos: []
           }
           let res = await this.studentService.updatePortfolio(item._id, data2)
-          // }
+
         }
         alert(JSON.stringify(data))
         this.image.push(uploadImageData);
@@ -189,7 +191,7 @@ export class PortfolioClassroomPage implements OnInit {
           }
           let resP = await this.studentService.getPortfolio(dataStudent)
           this.dataStudent = resP
-          if (this.dataStudent.data.items.length === 0) {
+          if (this.dataStudent.data.items.length <= 0) {
             let res = await this.studentService.uploadPortfolio(data)
           } else {
             let data2 = {
