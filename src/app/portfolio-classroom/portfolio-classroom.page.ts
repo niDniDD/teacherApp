@@ -17,7 +17,7 @@ export class PortfolioClassroomPage implements OnInit {
   dataclass: any
   dataclassSchool: any;
   datasuccess = false;
-  date: any;
+  date: Date;
   dataStudent: any;
   constructor(
     public act: ActivatedRoute,
@@ -34,7 +34,7 @@ export class PortfolioClassroomPage implements OnInit {
     this.dataclass = JSON.parse(res)
     console.log(this.dataclass);
     this.getData()
-    this.data = new Date;
+    this.date = new Date;
   }
 
   goBack() {
@@ -123,7 +123,7 @@ export class PortfolioClassroomPage implements OnInit {
         alert(JSON.stringify(this.dataStudent.data.items.length))
         if (this.dataStudent.data.items.length <= 0) {
           let res = await this.studentService.uploadPortfolio(data)
-          alert(res)
+          alert(JSON.stringify(res))
         } else {
           let data2 = {
             date: this.date,
