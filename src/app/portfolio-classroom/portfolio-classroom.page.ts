@@ -42,7 +42,7 @@ export class PortfolioClassroomPage implements OnInit {
   }
 
   gallery(item) {
-    this.route.navigateForward(['/gallery', { data: JSON.stringify(item) }]);
+    this.route.navigateForward(['/gallery', { data: JSON.stringify(item), dataClass: JSON.stringify(this.dataclass) }]);
   }
 
   async presentActionSheet(item) {
@@ -106,7 +106,7 @@ export class PortfolioClassroomPage implements OnInit {
           year: this.dataclass.dataschool.year
         }
 
-        if (uploadImageData) {
+        // if (uploadImageData) {
           let dataStudent = {
             citizenid: item.citizenid,
             class: item.class,
@@ -131,7 +131,7 @@ export class PortfolioClassroomPage implements OnInit {
               videos: []
             }
             let res = await this.studentService.updatePortfolio(item._id, data2)
-          }
+          // }
         }
         alert(JSON.stringify(data))
         this.image.push(uploadImageData);
@@ -175,7 +175,7 @@ export class PortfolioClassroomPage implements OnInit {
             videos: [],
             year: this.dataclass.dataschool.year
           }
-          if (uploadImageData) {
+          // if (uploadImageData) {
             let dataStudent = {
               citizenid: item.citizenid,
               class: item.class,
@@ -201,7 +201,7 @@ export class PortfolioClassroomPage implements OnInit {
               }
               let res = await this.studentService.updatePortfolio(item._id, data2)
             }
-          }
+          // }
           alert(JSON.stringify(data))
 
           if (this.image.length === results.length) {
