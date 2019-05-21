@@ -17,7 +17,7 @@ export class PortfolioClassroomPage implements OnInit {
   dataclass: any
   dataclassSchool: any;
   datasuccess = false;
-  date: any;
+  date: Date;
   dataStudent: any;
   constructor(
     public act: ActivatedRoute,
@@ -34,7 +34,7 @@ export class PortfolioClassroomPage implements OnInit {
     this.dataclass = JSON.parse(res)
     console.log(this.dataclass);
     this.getData()
-    this.data = new Date;
+    this.date = new Date;
   }
 
   goBack() {
@@ -106,7 +106,7 @@ export class PortfolioClassroomPage implements OnInit {
           year: this.dataclass.dataschool.year
         }
 
-   
+
         let dataStudent = {
           citizenid: item.citizenid,
           class: item.class,
@@ -134,7 +134,7 @@ export class PortfolioClassroomPage implements OnInit {
             videos: []
           }
           let res = await this.studentService.updatePortfolio(item._id, data2)
-     
+
         }
         alert(JSON.stringify(data))
         this.image.push(uploadImageData);
@@ -194,10 +194,12 @@ export class PortfolioClassroomPage implements OnInit {
           if (this.dataStudent.data.items.length <= 0) {
             let res = await this.studentService.uploadPortfolio(data)
           } else {
+            let get: any = await this.studentService.getPortfolio2(item._id);
+            alert(JSON.stringify(get))
             let data2 = {
               date: this.date,
               detail: " ",
-              images: uploadImageData,
+              images: this.image,
               school_id: this.dataclass.dataschool.school_id,
               title: " ",
               videos: []
