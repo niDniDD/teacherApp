@@ -19,6 +19,7 @@ export class PortfolioClassroomPage implements OnInit {
   datasuccess = false;
   date: Date;
   dataStudent: any;
+  dataImage: any;
   constructor(
     public act: ActivatedRoute,
     public route: NavController,
@@ -30,7 +31,8 @@ export class PortfolioClassroomPage implements OnInit {
 
 
   ngOnInit() {
-    let res: any = this.act.snapshot.paramMap.get('dataClassroom');
+    // let res: any = this.act.snapshot.paramMap.get('dataClassroom');
+    let res: any = window.localStorage.getItem('classroom')
     this.dataclass = JSON.parse(res)
     console.log(this.dataclass);
     this.getData()
@@ -106,7 +108,6 @@ export class PortfolioClassroomPage implements OnInit {
           year: this.dataclass.dataschool.year
         }
 
-   
         let dataStudent = {
           citizenid: item.citizenid,
           class: item.class,
@@ -125,16 +126,18 @@ export class PortfolioClassroomPage implements OnInit {
           let res = await this.studentService.uploadPortfolio(data)
           alert(JSON.stringify(res))
         } else {
+          let get: any = await this.studentService.getPortfolio2(item._id);
+          get.data.images.push(uploadImageData)
           let data2 = {
             date: this.date,
             detail: " ",
-            images: uploadImageData,
+            images: get.data.images,
             school_id: this.dataclass.dataschool.school_id,
             title: " ",
             videos: []
           }
           let res = await this.studentService.updatePortfolio(item._id, data2)
-     
+
         }
         alert(JSON.stringify(data))
         this.image.push(uploadImageData);
@@ -194,10 +197,11 @@ export class PortfolioClassroomPage implements OnInit {
           if (this.dataStudent.data.items.length <= 0) {
             let res = await this.studentService.uploadPortfolio(data)
           } else {
+
             let data2 = {
               date: this.date,
               detail: " ",
-              images: uploadImageData,
+              images: this.image,
               school_id: this.dataclass.dataschool.school_id,
               title: " ",
               videos: []

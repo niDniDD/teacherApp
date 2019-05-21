@@ -23,19 +23,19 @@ export class ClassroomPage implements OnInit {
     this.getData()
   }
 
-  studentList(item){
+  studentList(item) {
     item.dataschool = {
-      school_id:this.dataclass.data.school_id,
-      term:this.dataclass.data.term,
-      year:this.dataclass.data.year,
-      _id:this.dataclass.data._id
+      school_id: this.dataclass.data.school_id,
+      term: this.dataclass.data.term,
+      year: this.dataclass.data.year,
+      _id: this.dataclass.data._id
     }
     this.route.navigateForward(['/tabs/tab1', { dataClassroom: JSON.stringify(item) }]);
   }
 
-  async getData(){
+  async getData() {
     const res: any = await this.auth.getUser();
-    if(res.data){
+    if (res.data) {
       var bodyRoom = {
         citizenid: res.data.citizenid,
         school_id: res.data.schoolid
@@ -46,13 +46,14 @@ export class ClassroomPage implements OnInit {
     }
   }
 
-  portfolioClassroom(item){
+  portfolioClassroom(item) {
     item.dataschool = {
-      school_id:this.dataclass.data.school_id,
-      term:this.dataclass.data.term,
-      year:this.dataclass.data.year,
-      _id:this.dataclass.data._id
+      school_id: this.dataclass.data.school_id,
+      term: this.dataclass.data.term,
+      year: this.dataclass.data.year,
+      _id: this.dataclass.data._id
     }
-    this.route.navigateForward(['/portfolio-classroom', { dataClassroom: JSON.stringify(item) }]);
+    this.route.navigateForward('/portfolio-classroom');
+    window.localStorage.setItem('classroom', JSON.stringify(item))
   }
 }
