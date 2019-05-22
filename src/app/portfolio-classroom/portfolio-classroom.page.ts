@@ -85,7 +85,7 @@ export class PortfolioClassroomPage implements OnInit {
     const loading = await this.loadingController.create({
       spinner: 'crescent',
       duration: 5000,
-      message: 'Please wait...1/8',
+      message: 'Please wait...',
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });
@@ -210,7 +210,6 @@ export class PortfolioClassroomPage implements OnInit {
         }
         let res = await this.studentService.uploadPortfolio(data)
         if (res) {
-          this.ngOnInit();
           this.dismissOnPageChange();
         }
         // this.image.push(uploadImageData);
@@ -260,8 +259,7 @@ export class PortfolioClassroomPage implements OnInit {
             }
             let res = await this.studentService.uploadPortfolio(data)
             if (res) {
-              this.ngOnInit();
-              this.dismissOnPageChange();
+              this.dismissOnPageChange();                
             }
             this.image = []
 
