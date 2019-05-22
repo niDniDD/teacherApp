@@ -188,9 +188,10 @@ export class PortfolioClassroomPage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
+      this.presentLoadingWithOptions();
       const fileUri = (<any>window).Ionic.WebView.convertFileSrc(imageData);
       this.uploadImage(fileUri).then(async (uploadImageData) => {
-        this.presentLoadingWithOptions();
+        
 
         let data = {
           citizenid: item.citizenid,
@@ -229,6 +230,7 @@ export class PortfolioClassroomPage implements OnInit {
       outputType: 0
     };
     this.imagePicker.getPictures(options).then((results) => {
+      this.presentLoadingWithOptions();
       if (results == 'OK') {
         results = [];
       }
@@ -236,7 +238,7 @@ export class PortfolioClassroomPage implements OnInit {
         let fileUri;
         fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
         this.uploadImage(fileUri).then(async (uploadImageData) => {
-          this.presentLoadingWithOptions();
+          
           this.image.push(uploadImageData)
 
           if (this.image.length === results.length) {
