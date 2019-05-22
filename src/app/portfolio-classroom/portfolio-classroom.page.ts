@@ -83,7 +83,7 @@ export class PortfolioClassroomPage implements OnInit {
 
   async presentLoadingWithOptions() {
     const loading = await this.loadingController.create({
-      spinner: null,
+      spinner: 'crescent',
       duration: 5000,
       message: 'Please wait...',
       translucent: true,
@@ -190,6 +190,8 @@ export class PortfolioClassroomPage implements OnInit {
     this.camera.getPicture(options).then((imageData) => {
       const fileUri = (<any>window).Ionic.WebView.convertFileSrc(imageData);
       this.uploadImage(fileUri).then(async (uploadImageData) => {
+        this.presentLoadingWithOptions();
+
         let data = {
           citizenid: item.citizenid,
           class: item.class,
@@ -205,7 +207,6 @@ export class PortfolioClassroomPage implements OnInit {
           videos: [],
           year: this.dataclass.dataschool.year
         }
-        this.presentLoadingWithOptions();
         let res = await this.studentService.uploadPortfolio(data)
         if (res) {
           this.dismissOnPageChange()
@@ -235,7 +236,7 @@ export class PortfolioClassroomPage implements OnInit {
         let fileUri;
         fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
         this.uploadImage(fileUri).then(async (uploadImageData) => {
-
+          this.presentLoadingWithOptions();
           this.image.push(uploadImageData)
 
           if (this.image.length === results.length) {
@@ -255,7 +256,6 @@ export class PortfolioClassroomPage implements OnInit {
               videos: [],
               year: this.dataclass.dataschool.year
             }
-            this.presentLoadingWithOptions();
             let res = await this.studentService.uploadPortfolio(data)
             if (res) {
               this.dismissOnPageChange();
