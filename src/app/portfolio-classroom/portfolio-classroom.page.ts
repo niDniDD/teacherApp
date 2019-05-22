@@ -108,10 +108,7 @@ export class PortfolioClassroomPage implements OnInit {
           videos: [],
           year: this.dataclass.dataschool.year
         }
-        alert(JSON.stringify(data))
         let res = await this.studentService.uploadPortfolio(data)
-        alert(JSON.stringify(res))
-
         // this.image.push(uploadImageData);
       }, (uploadImageError) => {
         // console.log(uploadImageError);
@@ -139,11 +136,8 @@ export class PortfolioClassroomPage implements OnInit {
         this.uploadImage(fileUri).then(async (uploadImageData) => {
           
           this.image.push(uploadImageData)
-          alert('img'+this.image.length)
-          alert('resul'+results.length)
 
           if (this.image.length === results.length) {
-            alert('in'+this.image)
 
               let data = {
                 citizenid: item.citizenid,
@@ -160,10 +154,7 @@ export class PortfolioClassroomPage implements OnInit {
                 videos: [],
                 year: this.dataclass.dataschool.year
               }
-              alert(JSON.stringify(data))
               let res = await this.studentService.uploadPortfolio(data)
-              alert(JSON.stringify(res))
-            
           }
           
         }, (uploadImageError) => {
@@ -171,9 +162,7 @@ export class PortfolioClassroomPage implements OnInit {
           alert('Upload image err: ' + JSON.stringify(uploadImageError));
         });
       }
-       
     }, (err) => { });
-    alert(JSON.stringify('xxx'+this.image))
   }
 
   uploadImage(imageString): Promise<any> {
