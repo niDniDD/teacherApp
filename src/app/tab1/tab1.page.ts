@@ -41,7 +41,7 @@ export class Tab1Page {
 
   goBack(){
     localStorage.removeItem('@dataClass');
-    this.route.navigateBack('/classroom');
+    this.route.navigateBack('/tabs/tab1');
   }
 
   async getData() {

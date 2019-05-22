@@ -21,7 +21,7 @@ export class SigninPage implements OnInit {
   ngOnInit() {
     this.token = window.localStorage.getItem('@token')
     if(this.token){
-      this.route.navigateForward("/classroom")
+      this.route.navigateForward("/tabs/tab1")
     }
   }
 
@@ -37,7 +37,7 @@ export class SigninPage implements OnInit {
     console.log(res)
     window.localStorage.setItem('@token', res.token)
     if(res){
-      this.route.navigateForward("/classroom")
+      this.route.navigateForward("/tabs/tab1")
     }
   }
   catch (error) {

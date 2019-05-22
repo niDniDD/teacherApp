@@ -30,7 +30,7 @@ export class ClassroomPage implements OnInit {
       year: this.dataclass.data.year,
       _id: this.dataclass.data._id
     }
-    this.route.navigateForward(['/tabs/tab1', { dataClassroom: JSON.stringify(item) }]);
+    this.route.navigateForward(['/tab1', { dataClassroom: JSON.stringify(item) }]);
   }
 
   async getData() {

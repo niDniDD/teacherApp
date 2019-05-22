@@ -15,4 +15,13 @@ export class Tab4Page implements OnInit {
   ngOnInit() {
   }
 
+  async logOut() {
+    window.localStorage.clear();
+    let res = window.localStorage.getItem('@token')
+    console.log(res);
+    if (!res) {
+      this.route.navigateForward("/signin")
+    }
+  }
+
 }

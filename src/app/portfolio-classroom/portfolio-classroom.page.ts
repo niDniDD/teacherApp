@@ -46,7 +46,7 @@ export class PortfolioClassroomPage implements OnInit {
   }
 
   goBack() {
-    this.route.navigateBack('/classroom');
+    this.route.navigateBack('/tabs/tab1');
   }
 
   gallery(item) {
