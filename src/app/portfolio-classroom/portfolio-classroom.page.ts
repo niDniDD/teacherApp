@@ -13,7 +13,7 @@ import * as firebase from 'firebase';
 })
 export class PortfolioClassroomPage implements OnInit {
   images: any;
-  image =[];
+  image = [];
   data: any
   dataclass: any
   dataclassSchool: any;
@@ -21,6 +21,8 @@ export class PortfolioClassroomPage implements OnInit {
   date: Date;
   dataStudent: any;
   dataImage: any;
+ studentData: any;
+  imagePortfolio: any;
   constructor(
     public act: ActivatedRoute,
     public route: NavController,
@@ -31,12 +33,13 @@ export class PortfolioClassroomPage implements OnInit {
   ) { }
 
 
-  ngOnInit() {
+  async ngOnInit() {
     // let res: any = this.act.snapshot.paramMap.get('dataClassroom');
     let res: any = window.localStorage.getItem('classroom')
     this.dataclass = JSON.parse(res)
     console.log(this.dataclass);
-    this.getData()
+    await this.getData();
+    await this.getImage();
     this.date = new Date;
   }
 
@@ -48,8 +51,8 @@ export class PortfolioClassroomPage implements OnInit {
     this.route.navigateForward(['/gallery', { data: JSON.stringify(item), dataClass: JSON.stringify(this.dataclass) }]);
   }
 
+
   async presentActionSheet(item) {
-    console.log(item);
     const actionSheet = await this.actionSheetController.create({
       header: 'ตัวเลือก',
       buttons: [{
@@ -80,8 +83,38 @@ export class PortfolioClassroomPage implements OnInit {
     }
     this.data = await this.studentService.getStudentById(this.dataclassSchool);
     this.datasuccess = true
-    console.log(this.data);
   }
+
+  async getImage() {
+    try {
+      console.log(this.data)
+      this.data.datas.forEach(async studenData => {
+        console.log(studenData)
+        let data = {
+          citizenid: studenData.citizenid,
+          class: studenData.class,
+          classroom: studenData.classroom,
+          classtype: studenData.classtype,
+          school_id: this.dataclass.dataschool.school_id,
+          studentname: studenData.nametitle + studenData.firstname + studenData.lastname,
+          term: this.dataclass.dataschool.term,
+          year: this.dataclass.dataschool.year
+        }
+        let itemsLengt: any;
+        let res: any = await this.studentService.getPortfolio(data)
+        itemsLengt = res.data.items.length - 1
+        this.imagePortfolio = res.data.items[itemsLengt].images[0];
+
+        console.log(res);
+        console.log(this.imagePortfolio)
+      });
+
+
+    } catch (error) {
+
+    }
+  }
+
   onCamera(item) {
     const options: CameraOptions = {
       quality: 100,
@@ -134,29 +167,29 @@ export class PortfolioClassroomPage implements OnInit {
         let fileUri;
         fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
         this.uploadImage(fileUri).then(async (uploadImageData) => {
-          
+
           this.image.push(uploadImageData)
 
           if (this.image.length === results.length) {
 
-              let data = {
-                citizenid: item.citizenid,
-                class: item.class,
-                classroom: item.classroom,
-                classtype: item.classtype,
-                date: this.date,
-                detail: '',
-                images: this.image,
-                school_id: this.dataclass.dataschool.school_id,
-                studentname: item.nametitle + item.firstname + item.lastname,
-                term: this.dataclass.dataschool.term,
-                title: '',
-                videos: [],
-                year: this.dataclass.dataschool.year
-              }
-              let res = await this.studentService.uploadPortfolio(data)
+            let data = {
+              citizenid: item.citizenid,
+              class: item.class,
+              classroom: item.classroom,
+              classtype: item.classtype,
+              date: this.date,
+              detail: '',
+              images: this.image,
+              school_id: this.dataclass.dataschool.school_id,
+              studentname: item.nametitle + item.firstname + item.lastname,
+              term: this.dataclass.dataschool.term,
+              title: '',
+              videos: [],
+              year: this.dataclass.dataschool.year
+            }
+            let res = await this.studentService.uploadPortfolio(data)
           }
-          
+
         }, (uploadImageError) => {
           console.log(uploadImageError);
           alert('Upload image err: ' + JSON.stringify(uploadImageError));
