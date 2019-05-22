@@ -1,3 +1,4 @@
+import { StudentService } from './../services/student.service';
 import { Component, OnInit } from '@angular/core';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { ActivatedRoute } from '@angular/router';
@@ -21,21 +22,52 @@ export class GalleryPage implements OnInit {
       image: 'https://i.ytimg.com/vi/T8n100YxNJg/maxresdefault.jpg'
     },
     {
-      image:'https://i.ytimg.com/vi/Tv9vtj2ntLw/maxresdefault.jpg'
+      image: 'https://i.ytimg.com/vi/Tv9vtj2ntLw/maxresdefault.jpg'
     }
   ]
-  datasuccess = true
+  datasuccess = false
+  classroom: any;
+  portfolio: any;
+  imgPortfolio: any = [];
 
   constructor(
     private photoViewer: PhotoViewer,
     public act: ActivatedRoute,
     public route: NavController,
+    public studentservice: StudentService
   ) { }
 
   async ngOnInit() {
-    let res: any = this.act.snapshot.paramMap.get('data');
+    this.datasuccess = false;
+    let res: any = await this.act.snapshot.paramMap.get('data');
     this.data = await JSON.parse(res)
-    console.log(this.data);
+    // console.log(this.data);
+    this.getPortfolio();
+  }
+
+  async getPortfolio() {
+    let res: any = await window.localStorage.getItem('classroom');
+    this.classroom = await JSON.parse(res)
+    // console.log(this.classroom);
+    let body = {
+      citizenid: this.data.citizenid,
+      class: this.data.class,
+      classroom: this.data.classroom,
+      classtype: this.data.classtype,
+      school_id: this.classroom.dataschool.school_id,
+      studentname: this.data.firstname + this.data.lastname,
+      term: this.classroom.dataschool.term,
+      year: this.classroom.dataschool.year,
+    }
+    let resp: any = await this.studentservice.getPortfolio(body);
+    this.portfolio = await resp;
+    this.portfolio.data.items.forEach(port => {
+      port.images.forEach(img => {
+        this.imgPortfolio.push(img);
+      });
+    });
+    this.datasuccess = true;
+
   }
 
   viewer(image: string) {

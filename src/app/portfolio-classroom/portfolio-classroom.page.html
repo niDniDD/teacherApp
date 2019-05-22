@@ -1,36 +1,38 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-row>
-        <ion-col size=1>
-          <ion-icon name="arrow-dropleft-circle" size="large" (click)="goBack()"> </ion-icon>
-        </ion-col>
-        <ion-col>
-          <ion-title class="title">
-            เพื่มแฟ้มผลงานห้อง{{dataclass.classtype}} {{dataclass.class}}/{{dataclass.room}}
-          </ion-title>
-        </ion-col>
-      </ion-row>
-    </ion-toolbar>
-    <ion-progress-bar type="indeterminate" [hidden]=datasuccess></ion-progress-bar>
-  </ion-header>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size=1>
+        <ion-icon name="arrow-dropleft-circle" size="large" (click)="goBack()"> </ion-icon>
+      </ion-col>
+      <ion-col>
+        <ion-title class="title">
+          เพื่มแฟ้มผลงานห้อง{{dataclass.classtype}} {{dataclass.class}}/{{dataclass.room}}
+        </ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+  <ion-progress-bar type="indeterminate" [hidden]=datasuccess></ion-progress-bar>
+</ion-header>
 
 <ion-content *ngIf="datasuccess">
-  <ion-grid> 
+  <ion-grid>
     <ion-row>
       <ion-col size="6" class="title" *ngFor="let item of data.datas">
         <ion-card mode="ios">
           <ion-slides>
             <ion-slide class="card">
-                <img class="img-style" (click)="gallery(item)" src="http://pandulogistics.com/content/gallery/default_photo.png">
+              <img *ngIf="imagePortfolio " [src]="imagePortfolio" alt="" class="img-style" (click)="gallery(item)">
+              <img *ngIf="!imagePortfolio" class="img-style" (click)="gallery(item)"
+                src="http://pandulogistics.com/content/gallery/default_photo.png">
             </ion-slide>
           </ion-slides>
           <ion-fab vertical="top" horizontal="end" slot="fixed">
-              <ion-fab-button class="fab" (click)="presentActionSheet(item)">
-                <ion-icon name="add-circle-outline"></ion-icon>
-              </ion-fab-button>
-            </ion-fab>
+            <ion-fab-button class="fab" (click)="presentActionSheet(item)">
+              <ion-icon name="add-circle-outline"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
         </ion-card>
-          {{item.firstname}} {{item.lastname}}
+        {{item.firstname}} {{item.lastname}}
       </ion-col>
     </ion-row>
   </ion-grid>
