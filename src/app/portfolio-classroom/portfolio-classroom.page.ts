@@ -12,7 +12,8 @@ import * as firebase from 'firebase';
   styleUrls: ['./portfolio-classroom.page.scss'],
 })
 export class PortfolioClassroomPage implements OnInit {
-  image: any;
+  images: any;
+  image =[];
   data: any
   dataclass: any
   dataclassSchool: any;
@@ -107,44 +108,11 @@ export class PortfolioClassroomPage implements OnInit {
           videos: [],
           year: this.dataclass.dataschool.year
         }
-
-        let dataStudent = {
-          citizenid: item.citizenid,
-          class: item.class,
-          classroom: item.classroom,
-          classtype: item.classtype,
-          school_id: this.dataclass.dataschool.school_id,
-          studentname: item.nametitle + item.firstname + item.lastname,
-          term: this.dataclass.dataschool.term,
-          year: this.dataclass.dataschool.year
-        }
-        let resP = await this.studentService.getPortfolio(dataStudent)
-        this.dataStudent = resP
-        alert(JSON.stringify(resP))
-        alert(JSON.stringify(this.dataStudent.data.items.length))
-        alert(JSON.stringify('idNajaP:'+item._id))
-
-        if (this.dataStudent.data.items.length <= 0) {
-          let res = await this.studentService.uploadPortfolio(data)
-          alert(JSON.stringify(res))
-        } else {
-          let get: any = await this.studentService.getPortfolio2(item._id);
-          get.data.images.push(uploadImageData)
-          let data2 = {
-            date: this.date,
-            detail: " ",
-            images: get.data.images,
-            school_id: this.dataclass.dataschool.school_id,
-            title: " ",
-            videos: []
-          }
-          alert(JSON.stringify(data2))
-          alert(JSON.stringify(item._id))
-          let res = await this.studentService.updatePortfolio(item._id, data2)
-
-        }
         alert(JSON.stringify(data))
-        this.image.push(uploadImageData);
+        let res = await this.studentService.uploadPortfolio(data)
+        alert(JSON.stringify(res))
+
+        // this.image.push(uploadImageData);
       }, (uploadImageError) => {
         // console.log(uploadImageError);
         alert('Upload image err: ' + JSON.stringify(uploadImageError));
@@ -156,7 +124,7 @@ export class PortfolioClassroomPage implements OnInit {
   }
   onImage(item) {
     const options = {
-      maximumImagesCount: 5,
+      maximumImagesCount: 100,
       width: 900,
       quality: 70,
       outputType: 0
@@ -169,60 +137,43 @@ export class PortfolioClassroomPage implements OnInit {
         let fileUri;
         fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
         this.uploadImage(fileUri).then(async (uploadImageData) => {
+          
           this.image.push(uploadImageData)
-          let data = {
-            citizenid: item.citizenid,
-            class: item.class,
-            classroom: item.classroom,
-            classtype: item.classtype,
-            date: this.date,
-            detail: '',
-            images: this.image,
-            school_id: this.dataclass.dataschool.school_id,
-            studentname: item.nametitle + item.firstname + item.lastname,
-            term: this.dataclass.dataschool.term,
-            title: '',
-            videos: [],
-            year: this.dataclass.dataschool.year
-          }
-          // if (uploadImageData) {
-          let dataStudent = {
-            citizenid: item.citizenid,
-            class: item.class,
-            classroom: item.classroom,
-            classtype: item.classtype,
-            school_id: this.dataclass.dataschool.school_id,
-            studentname: item.nametitle + item.firstname + item.lastname,
-            term: this.dataclass.dataschool.term,
-            year: this.dataclass.dataschool.year
-          }
-          let resP = await this.studentService.getPortfolio(dataStudent)
-          this.dataStudent = resP
-          if (this.dataStudent.data.items.length <= 0) {
-            let res = await this.studentService.uploadPortfolio(data)
-          } else {
-
-            let data2 = {
-              date: this.date,
-              detail: " ",
-              images: this.image,
-              school_id: this.dataclass.dataschool.school_id,
-              title: " ",
-              videos: []
-            }
-            let res = await this.studentService.updatePortfolio(item._id, data2)
-          }
-          // }
-          alert(JSON.stringify(data))
+          alert('img'+this.image.length)
+          alert('resul'+results.length)
 
           if (this.image.length === results.length) {
+            alert('in'+this.image)
+
+              let data = {
+                citizenid: item.citizenid,
+                class: item.class,
+                classroom: item.classroom,
+                classtype: item.classtype,
+                date: this.date,
+                detail: '',
+                images: this.image,
+                school_id: this.dataclass.dataschool.school_id,
+                studentname: item.nametitle + item.firstname + item.lastname,
+                term: this.dataclass.dataschool.term,
+                title: '',
+                videos: [],
+                year: this.dataclass.dataschool.year
+              }
+              alert(JSON.stringify(data))
+              let res = await this.studentService.uploadPortfolio(data)
+              alert(JSON.stringify(res))
+            
           }
+          
         }, (uploadImageError) => {
           console.log(uploadImageError);
           alert('Upload image err: ' + JSON.stringify(uploadImageError));
         });
       }
+       
     }, (err) => { });
+    alert(JSON.stringify('xxx'+this.image))
   }
 
   uploadImage(imageString): Promise<any> {
