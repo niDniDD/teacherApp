@@ -20,7 +20,7 @@
       <ion-col size="6" size-sm="6" size-md="6" size-lg="4" class="title" *ngFor="let item of data.datas">
         <ion-card mode="ios" class="margin-card card">
           <div>
-            <ion-slides style="height: 19vh;">
+            <ion-slides style="height: 19vh;margin-bottom: 3px">
               <ion-slide class="card" *ngIf="item && item.items && item.items.length > 0">
                 <img [src]="item.items[0].images[0]" alt="" class="img-style" (click)="gallery(item)">
                 <!-- <img *ngIf="!imagePortfolio" class="img-style" (click)="gallery(item)"
