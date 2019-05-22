@@ -23,6 +23,7 @@ export class PortfolioClassroomPage implements OnInit {
   dataImage: any;
   studentData: any;
   imagePortfolio: any;
+
   constructor(
     public act: ActivatedRoute,
     public route: NavController,
@@ -38,7 +39,7 @@ export class PortfolioClassroomPage implements OnInit {
     // let res: any = this.act.snapshot.paramMap.get('dataClassroom');
     let res: any = window.localStorage.getItem('classroom')
     this.dataclass = JSON.parse(res)
-    console.log(this.dataclass);
+    // console.log(this.dataclass);
     await this.getData();
     await this.getImage();
     this.date = new Date;
@@ -49,7 +50,22 @@ export class PortfolioClassroomPage implements OnInit {
   }
 
   gallery(item) {
-    this.route.navigateForward(['/gallery', { data: JSON.stringify(item), dataClass: JSON.stringify(this.dataclass) }]);
+    console.log(item);
+    this.route.navigateForward(['/gallery', {
+      data: JSON.stringify({
+        citizenid: item.citizenid,
+        class: item.class,
+        classroom: item.classroom,
+        classtype: item.classtype,
+        firstname: item.firstname,
+        isdevelopment: item.isdevelopment,
+        isgrade: item.isgrade,
+        lastname: item.lastname,
+        nametitle: item.nametitle,
+        studentid: item.studentid,
+        _id: item._id,
+      })
+    }]);
   }
 
 
@@ -115,28 +131,49 @@ export class PortfolioClassroomPage implements OnInit {
   async getImage() {
     try {
       console.log(this.data)
-      this.data.datas.forEach(async studenData => {
-        console.log(studenData)
-        let data = {
-          citizenid: studenData.citizenid,
-          class: studenData.class,
-          classroom: studenData.classroom,
-          classtype: studenData.classtype,
+      for (let i = 0; i < this.data.datas.length; i++) {
+        console.log(i);
+        let data = {}
+        data = {
+          citizenid: this.data.datas[i].citizenid,
+          class: this.data.datas[i].class,
+          classroom: this.data.datas[i].classroom,
+          classtype: this.data.datas[i].classtype,
           school_id: this.dataclass.dataschool.school_id,
-          studentname: studenData.nametitle + studenData.firstname + studenData.lastname,
+          studentname: this.data.datas[i].nametitle + this.data.datas[i].firstname + this.data.datas[i].lastname,
           term: this.dataclass.dataschool.term,
           year: this.dataclass.dataschool.year
         }
-        let itemsLengt: any;
-        let res: any = await this.studentService.getPortfolio(data)
-        itemsLengt = res.data.items.length - 1
-        this.imagePortfolio = res.data.items[itemsLengt].images[0];
+        console.log(data);
+        let res: any = {};
+        res = await this.studentService.getPortfolio(data)
+        // console.log(res);
+        // console.log(i);
+        // console.log(studenData);
+        // console.log(this.data.datas[i]);
+        // console.log(res.data.name);
+        // console.log(this.data.datas[i].nametitle + this.data.datas[i].firstname + ' ' + this.data.datas[i].lastname);
+        if (res) {
+          this.data.datas[i] = await {
+            citizenid: this.data.datas[i].citizenid,
+            class: this.data.datas[i].class,
+            classroom: this.data.datas[i].classroom,
+            classtype: this.data.datas[i].classtype,
+            firstname: this.data.datas[i].firstname,
+            isdevelopment: this.data.datas[i].isdevelopment,
+            isgrade: this.data.datas[i].isgrade,
+            lastname: this.data.datas[i].lastname,
+            nametitle: this.data.datas[i].nametitle,
+            studentid: this.data.datas[i].studentid,
+            _id: this.data.datas[i]._id,
+            items: res.data.items
+          }
+          console.log(i);
+        }
+      }
+      // this.data.datas.forEach(async studenData => {
 
-        console.log(res);
-        console.log(this.imagePortfolio)
-      });
-
-
+      // });
     } catch (error) {
 
     }
@@ -219,11 +256,12 @@ export class PortfolioClassroomPage implements OnInit {
               year: this.dataclass.dataschool.year
             }
             this.presentLoadingWithOptions();
-
             let res = await this.studentService.uploadPortfolio(data)
-            if(res){
+            if (res) {
               this.dismissOnPageChange();
             }
+            this.image = []
+
           }
 
         }, (uploadImageError) => {
