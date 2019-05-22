@@ -85,7 +85,7 @@ export class PortfolioClassroomPage implements OnInit {
     const loading = await this.loadingController.create({
       spinner: 'crescent',
       duration: 5000,
-      message: 'Please wait...',
+      message: 'Please wait...1/8',
       translucent: true,
       cssClass: 'custom-class custom-loading'
     });
@@ -241,7 +241,6 @@ export class PortfolioClassroomPage implements OnInit {
         this.uploadImage(fileUri).then(async (uploadImageData) => {
 
           this.image.push(uploadImageData)
-
           if (this.image.length === results.length) {
 
             let data = {
