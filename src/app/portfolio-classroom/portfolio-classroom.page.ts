@@ -155,6 +155,7 @@ export class PortfolioClassroomPage implements OnInit {
                 year: this.dataclass.dataschool.year
               }
               let res = await this.studentService.uploadPortfolio(data)
+              this.image = []
           }
           
         }, (uploadImageError) => {
