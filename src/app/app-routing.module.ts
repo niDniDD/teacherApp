@@ -14,10 +14,10 @@ const routes: Routes = [
   { path: 'history-portfolio', loadChildren: './history-portfolio/history-portfolio.module#HistoryPortfolioPageModule' },
   { path: 'history-height-weight', loadChildren: './history-height-weight/history-height-weight.module#HistoryHeightWeightPageModule' },
   { path: 'signin', loadChildren: './signin/signin.module#SigninPageModule' },
-  { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomPageModule' },
+  // { path: 'classroom', loadChildren: './classroom/classroom.module#ClassroomPageModule' },
   { path: 'gallery', loadChildren: './gallery/gallery.module#GalleryPageModule' },
-  { path: 'portfolio-classroom', loadChildren: './portfolio-classroom/portfolio-classroom.module#PortfolioClassroomPageModule' }
-
+  { path: 'portfolio-classroom', loadChildren: './portfolio-classroom/portfolio-classroom.module#PortfolioClassroomPageModule' },
+  { path: 'tab1', loadChildren: './tab1/tab1.module#Tab1PageModule' },
 
 
 

@@ -13,7 +13,7 @@
   <ion-list *ngIf="dataclass">
     <ion-item *ngFor="let item of dataclass.data.class">
       <ion-row (click)="studentList(item)">
-          {{item.classtype}} {{item.class}}/{{item.room}} (จำนวน {{item.count}} คน)
+        {{item.classtype}} {{item.class}}/{{item.room}} (จำนวน {{item.count}} คน)
       </ion-row>
       <ion-button expand="block" slot="end" (click)="portfolioClassroom(item)">เพื่มผลงาน</ion-button>
     </ion-item>
