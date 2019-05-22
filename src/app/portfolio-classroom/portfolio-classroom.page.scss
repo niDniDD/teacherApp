@@ -4,6 +4,7 @@
 
 .img-style {
   object-fit: cover;
+  width: 100%;
 }
 
 .card{
@@ -15,4 +16,16 @@
   height: 30px;
   width: 30px;
   margin-bottom: 10px;
+}
+
+.border {
+  border-radius: 5%;
+    border: solid 1px lightgray;
+}
+
+.margin-card{
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
 }
