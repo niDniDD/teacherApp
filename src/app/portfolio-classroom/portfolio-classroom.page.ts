@@ -191,7 +191,7 @@ export class PortfolioClassroomPage implements OnInit {
       this.presentLoadingWithOptions();
       const fileUri = (<any>window).Ionic.WebView.convertFileSrc(imageData);
       this.uploadImage(fileUri).then(async (uploadImageData) => {
-        
+
 
         let data = {
           citizenid: item.citizenid,
@@ -210,7 +210,8 @@ export class PortfolioClassroomPage implements OnInit {
         }
         let res = await this.studentService.uploadPortfolio(data)
         if (res) {
-          this.dismissOnPageChange()
+          this.ngOnInit();
+          this.dismissOnPageChange();
         }
         // this.image.push(uploadImageData);
       }, (uploadImageError) => {
@@ -238,7 +239,7 @@ export class PortfolioClassroomPage implements OnInit {
         let fileUri;
         fileUri = (<any>window).Ionic.WebView.convertFileSrc(results[i]);
         this.uploadImage(fileUri).then(async (uploadImageData) => {
-          
+
           this.image.push(uploadImageData)
 
           if (this.image.length === results.length) {
@@ -260,6 +261,7 @@ export class PortfolioClassroomPage implements OnInit {
             }
             let res = await this.studentService.uploadPortfolio(data)
             if (res) {
+              this.ngOnInit();
               this.dismissOnPageChange();
             }
             this.image = []
