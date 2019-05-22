@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NavController, ActionSheetController } from '@ionic/angular';
+import { NavController, ActionSheetController, LoadingController } from '@ionic/angular';
 import { StudentService } from '../services/student.service';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -30,7 +30,8 @@ export class PortfolioClassroomPage implements OnInit {
     public actionSheetController: ActionSheetController,
     public studentService: StudentService,
     private imagePicker: ImagePicker,
-    private camera: Camera
+    private camera: Camera,
+    public loadingController: LoadingController
   ) { }
 
 
@@ -67,6 +68,32 @@ export class PortfolioClassroomPage implements OnInit {
     }]);
   }
 
+
+  // async presentLoading() {
+  //   const loading = await this.loadingController.create({
+  //     message: 'Hellooo',
+  //     duration: 2000
+  //   });
+  //   await loading.present();
+
+  //   const { role, data } = await loading.onDidDismiss();
+
+  //   console.log('Loading dismissed!');
+  // }
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      spinner: 'crescent',
+      duration: 5000,
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present();
+  }
+  async dismissOnPageChange() {
+    return await this.loadingController.dismiss();
+  }
 
   async presentActionSheet(item) {
     const actionSheet = await this.actionSheetController.create({
@@ -161,8 +188,11 @@ export class PortfolioClassroomPage implements OnInit {
     }
 
     this.camera.getPicture(options).then((imageData) => {
+      this.presentLoadingWithOptions();
       const fileUri = (<any>window).Ionic.WebView.convertFileSrc(imageData);
       this.uploadImage(fileUri).then(async (uploadImageData) => {
+
+
         let data = {
           citizenid: item.citizenid,
           class: item.class,
@@ -179,6 +209,10 @@ export class PortfolioClassroomPage implements OnInit {
           year: this.dataclass.dataschool.year
         }
         let res = await this.studentService.uploadPortfolio(data)
+        if (res) {
+          this.ngOnInit();
+          this.dismissOnPageChange();
+        }
         // this.image.push(uploadImageData);
       }, (uploadImageError) => {
         // console.log(uploadImageError);
@@ -197,6 +231,7 @@ export class PortfolioClassroomPage implements OnInit {
       outputType: 0
     };
     this.imagePicker.getPictures(options).then((results) => {
+      this.presentLoadingWithOptions();
       if (results == 'OK') {
         results = [];
       }
@@ -209,23 +244,28 @@ export class PortfolioClassroomPage implements OnInit {
 
           if (this.image.length === results.length) {
 
-              let data = {
-                citizenid: item.citizenid,
-                class: item.class,
-                classroom: item.classroom,
-                classtype: item.classtype,
-                date: this.date,
-                detail: '',
-                images: this.image,
-                school_id: this.dataclass.dataschool.school_id,
-                studentname: item.nametitle + item.firstname + item.lastname,
-                term: this.dataclass.dataschool.term,
-                title: '',
-                videos: [],
-                year: this.dataclass.dataschool.year
-              }
-              let res = await this.studentService.uploadPortfolio(data)
-              this.image = []
+            let data = {
+              citizenid: item.citizenid,
+              class: item.class,
+              classroom: item.classroom,
+              classtype: item.classtype,
+              date: this.date,
+              detail: '',
+              images: this.image,
+              school_id: this.dataclass.dataschool.school_id,
+              studentname: item.nametitle + item.firstname + item.lastname,
+              term: this.dataclass.dataschool.term,
+              title: '',
+              videos: [],
+              year: this.dataclass.dataschool.year
+            }
+            let res = await this.studentService.uploadPortfolio(data)
+            if (res) {
+              this.ngOnInit();
+              this.dismissOnPageChange();
+            }
+            this.image = []
+
           }
 
         }, (uploadImageError) => {
