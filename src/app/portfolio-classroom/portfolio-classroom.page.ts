@@ -210,7 +210,6 @@ export class PortfolioClassroomPage implements OnInit {
         }
         let res = await this.studentService.uploadPortfolio(data)
         if (res) {
-          this.ngOnInit();
           this.dismissOnPageChange();
         }
         // this.image.push(uploadImageData);
@@ -241,7 +240,6 @@ export class PortfolioClassroomPage implements OnInit {
         this.uploadImage(fileUri).then(async (uploadImageData) => {
 
           this.image.push(uploadImageData)
-
           if (this.image.length === results.length) {
 
             let data = {
@@ -261,8 +259,7 @@ export class PortfolioClassroomPage implements OnInit {
             }
             let res = await this.studentService.uploadPortfolio(data)
             if (res) {
-              this.ngOnInit();
-              this.dismissOnPageChange();
+              this.dismissOnPageChange();                
             }
             this.image = []
 
