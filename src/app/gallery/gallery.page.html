@@ -13,15 +13,15 @@
 <ion-content>
   <ion-grid>
     <ion-row>
-      <ion-col size="12">
-        <p class="name">ชื่อ: พลวัฒน์ ช่างเก็บ</p>
+      <ion-col size="12" *ngIf="portfolio && portfolio.data && portfolio.data.name">
+        <p class="name">ชื่อ: {{portfolio.data.name}}</p>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid style="padding-right: 2px">
+  <ion-grid style="padding-right: 2px" *ngIf="imgPortfolio && imgPortfolio.length > 0">
     <ion-row>
-      <ion-col class="padding-image" size="6" *ngFor="let item of gallery">
-        <img class="image" (click)="viewer(item.image)" [src]="item.image">
+      <ion-col class="padding-image" size="6" *ngFor="let image of imgPortfolio">
+        <img class="image" (click)="viewer(image)" [src]="image">
       </ion-col>
     </ion-row>
   </ion-grid>
