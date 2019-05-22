@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NavController, ActionSheetController } from '@ionic/angular';
+import { NavController, ActionSheetController, LoadingController } from '@ionic/angular';
 import { StudentService } from '../services/student.service';
 import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
@@ -21,7 +21,7 @@ export class PortfolioClassroomPage implements OnInit {
   date: Date;
   dataStudent: any;
   dataImage: any;
- studentData: any;
+  studentData: any;
   imagePortfolio: any;
   constructor(
     public act: ActivatedRoute,
@@ -29,7 +29,8 @@ export class PortfolioClassroomPage implements OnInit {
     public actionSheetController: ActionSheetController,
     public studentService: StudentService,
     private imagePicker: ImagePicker,
-    private camera: Camera
+    private camera: Camera,
+    public loadingController: LoadingController
   ) { }
 
 
@@ -51,6 +52,32 @@ export class PortfolioClassroomPage implements OnInit {
     this.route.navigateForward(['/gallery', { data: JSON.stringify(item), dataClass: JSON.stringify(this.dataclass) }]);
   }
 
+
+  // async presentLoading() {
+  //   const loading = await this.loadingController.create({
+  //     message: 'Hellooo',
+  //     duration: 2000
+  //   });
+  //   await loading.present();
+
+  //   const { role, data } = await loading.onDidDismiss();
+
+  //   console.log('Loading dismissed!');
+  // }
+
+  async presentLoadingWithOptions() {
+    const loading = await this.loadingController.create({
+      spinner: null,
+      duration: 5000,
+      message: 'Please wait...',
+      translucent: true,
+      cssClass: 'custom-class custom-loading'
+    });
+    return await loading.present();
+  }
+  async dismissOnPageChange() {
+    return await this.loadingController.dismiss();
+  }
 
   async presentActionSheet(item) {
     const actionSheet = await this.actionSheetController.create({
@@ -141,7 +168,11 @@ export class PortfolioClassroomPage implements OnInit {
           videos: [],
           year: this.dataclass.dataschool.year
         }
+        this.presentLoadingWithOptions();
         let res = await this.studentService.uploadPortfolio(data)
+        if (res) {
+          this.dismissOnPageChange()
+        }
         // this.image.push(uploadImageData);
       }, (uploadImageError) => {
         // console.log(uploadImageError);
@@ -187,7 +218,12 @@ export class PortfolioClassroomPage implements OnInit {
               videos: [],
               year: this.dataclass.dataschool.year
             }
+            this.presentLoadingWithOptions();
+
             let res = await this.studentService.uploadPortfolio(data)
+            if(res){
+              this.dismissOnPageChange();
+            }
           }
 
         }, (uploadImageError) => {
