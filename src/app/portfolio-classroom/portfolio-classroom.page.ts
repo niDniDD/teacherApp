@@ -209,22 +209,23 @@ export class PortfolioClassroomPage implements OnInit {
 
           if (this.image.length === results.length) {
 
-            let data = {
-              citizenid: item.citizenid,
-              class: item.class,
-              classroom: item.classroom,
-              classtype: item.classtype,
-              date: this.date,
-              detail: '',
-              images: this.image,
-              school_id: this.dataclass.dataschool.school_id,
-              studentname: item.nametitle + item.firstname + item.lastname,
-              term: this.dataclass.dataschool.term,
-              title: '',
-              videos: [],
-              year: this.dataclass.dataschool.year
-            }
-            let res = await this.studentService.uploadPortfolio(data)
+              let data = {
+                citizenid: item.citizenid,
+                class: item.class,
+                classroom: item.classroom,
+                classtype: item.classtype,
+                date: this.date,
+                detail: '',
+                images: this.image,
+                school_id: this.dataclass.dataschool.school_id,
+                studentname: item.nametitle + item.firstname + item.lastname,
+                term: this.dataclass.dataschool.term,
+                title: '',
+                videos: [],
+                year: this.dataclass.dataschool.year
+              }
+              let res = await this.studentService.uploadPortfolio(data)
+              this.image = []
           }
 
         }, (uploadImageError) => {
