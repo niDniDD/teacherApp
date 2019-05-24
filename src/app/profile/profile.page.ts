@@ -11,6 +11,8 @@ import { ProfileSavePage } from '../profile-save/profile-save.page';
 import { ProfileComponent } from './profile.component';
 import { StudentService } from '../services/student.service';
 import { HistoryHeightWeightPage } from '../history-height-weight/history-height-weight.page';
+import { environment } from 'src/environments/environment';
+
 
 
 
@@ -33,15 +35,16 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    let res:any = this.act.snapshot.paramMap.get('data');
-      this.data = JSON.parse(res)
+    let res: any = this.act.snapshot.paramMap.get('data');
+    let student: any = JSON.parse(window.localStorage.getItem(environment.apiUrl + '@dataStuden'));
+    this.data = student
     console.log(this.data);
   }
-  
-   backtab4() {
-    this.route.navigateBack('/tabs/tab1');
+
+  backtab4() {
+    this.route.navigateBack('/tab1');
   }
-  
+
 
   async score() {
     const modal = await this.modalcontroller.create({
@@ -62,7 +65,7 @@ export class ProfilePage implements OnInit {
     });
     return await modal.present();
   }
-  
+
   async evo() {
     const modal = await this.modalcontroller.create({
       component: EvoPage,
@@ -76,11 +79,11 @@ export class ProfilePage implements OnInit {
   async editprofile() {
     const modal = await this.modalcontroller.create({
       component: EditProfilePage,
-      componentProps: { 
+      componentProps: {
         data: this.data
-       }
-      });
-      return await modal.present();
+      }
+    });
+    return await modal.present();
   }
 
   async profilesave() {

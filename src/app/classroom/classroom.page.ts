@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth/auth.service';
 import { StudentService } from '../services/student.service';
 import { NavController } from '@ionic/angular';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-classroom',
@@ -31,6 +32,7 @@ export class ClassroomPage implements OnInit {
       _id: this.dataclass.data._id
     }
     this.route.navigateForward(['/tab1', { dataClassroom: JSON.stringify(item) }]);
+    window.localStorage.setItem(environment.apiUrl + '@dataClassroom', JSON.stringify(item));
   }
 
   async getData() {

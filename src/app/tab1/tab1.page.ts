@@ -3,6 +3,7 @@ import { NavController, ModalController } from '@ionic/angular';
 import { StudentService } from '../services/student.service';
 import { ActivatedRoute } from '@angular/router';
 import { ProfilePage } from '../profile/profile.page';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-tab1',
@@ -12,34 +13,37 @@ import { ProfilePage } from '../profile/profile.page';
 export class Tab1Page {
   data: any;
   dataclass: any;
-  dataclassSchool:any;
-  datasuccess = false 
-  
+  dataclassSchool: any;
+  datasuccess = false
+
   constructor(public studentService: StudentService,
     public route: NavController,
     public act: ActivatedRoute,
     public modalcontroller: ModalController,
-  ) {}
-  
+  ) { }
+
   ngOnInit() {
-    if(!localStorage.getItem('@dataClass')){
-      let res:any = this.act.snapshot.paramMap.get('dataClassroom');
-      this.dataclass = JSON.parse(res)
+    if (!localStorage.getItem('@dataClass')) {
+      let res: any = this.act.snapshot.paramMap.get('dataClassroom');
+      let classRoom: any = JSON.parse(window.localStorage.getItem(environment.apiUrl + '@dataClassroom'));
+      this.dataclass = classRoom
       localStorage.setItem('@dataClass', JSON.stringify(this.dataclass));
       this.getData()
-    }else{
-      const res:any = localStorage.getItem('@dataClass');
-      this.dataclass = JSON.parse(res)
+    } else {
+      const res: any = localStorage.getItem('@dataClass');
+      let classRoom: any = JSON.parse(window.localStorage.getItem(environment.apiUrl + '@dataClassroom'));
+      this.dataclass = classRoom
       this.getData()
     }
   }
 
   async list(item) {
     item.dataclass = this.dataclass
-    this.route.navigateForward(['/profile', { data: JSON.stringify(item) }]);
+    this.route.navigateForward(['/profile']);
+    window.localStorage.setItem(environment.apiUrl + '@dataStuden', JSON.stringify(item));
   }
 
-  goBack(){
+  goBack() {
     localStorage.removeItem('@dataClass');
     this.route.navigateBack('/tabs/tab1');
   }
@@ -59,7 +63,7 @@ export class Tab1Page {
         const element = this.data.datas[index];
         // const Student:any = await this.studentService.getStudent(element.citizenid)
         // this.data.datas[index].image = Student.data.student.image
-        if(!this.data.datas[index].image){
+        if (!this.data.datas[index].image) {
           this.data.datas[index].image = 'https://cdn.iconscout.com/icon/free/png-256/account-profile-avatar-man-circle-round-user-30452.png'
         }
       }
