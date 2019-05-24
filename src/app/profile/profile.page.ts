@@ -33,15 +33,15 @@ export class ProfilePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    let res:any = this.act.snapshot.paramMap.get('data');
-      this.data = JSON.parse(res)
+    let res: any = this.act.snapshot.paramMap.get('data');
+    this.data = JSON.parse(res)
     console.log(this.data);
   }
-  
-   backtab4() {
+
+  backtab4() {
     this.route.navigateBack('/tabs/tab1');
   }
-  
+
 
   async score() {
     const modal = await this.modalcontroller.create({
@@ -62,7 +62,7 @@ export class ProfilePage implements OnInit {
     });
     return await modal.present();
   }
-  
+
   async evo() {
     const modal = await this.modalcontroller.create({
       component: EvoPage,
@@ -76,11 +76,11 @@ export class ProfilePage implements OnInit {
   async editprofile() {
     const modal = await this.modalcontroller.create({
       component: EditProfilePage,
-      componentProps: { 
+      componentProps: {
         data: this.data
-       }
-      });
-      return await modal.present();
+      }
+    });
+    return await modal.present();
   }
 
   async profilesave() {

@@ -24,7 +24,7 @@
   <div *ngIf="dataWeightHeight && dataWeightHeight.data && dataWeightHeight.data.personality">
     <ion-card *ngFor="let item of dataWeightHeight.data.personality">
       <ion-card-header>
-        วัน/เดือน/ปี {{item.date}}
+        วัน/เดือน/ปี : {{item.date | date :  "M/d/yy, h:mm a"}}
       </ion-card-header>
       <ion-card-content>
         <ion-row>

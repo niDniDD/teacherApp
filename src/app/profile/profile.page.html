@@ -4,16 +4,10 @@
       <ion-col size=1>
         <ion-icon name="close-circle" size="large" (click)="backtab4()"> </ion-icon>
       </ion-col>
-      <ion-col size=9>
+      <ion-col size=11>
         <ion-title style="text-align:center">
           โปรไฟล์
         </ion-title>
-      </ion-col>
-      <ion-col size=1>
-        <ion-icon name="create" size="large" (click)="editprofile()"></ion-icon>
-      </ion-col>
-      <ion-col size=1>
-        <ion-icon name="more" size="large" (click)="presentPopover($event)"></ion-icon>
       </ion-col>
     </ion-row>
   </ion-toolbar>
@@ -21,16 +15,16 @@
 
 <ion-content>
 
-  
-    <ion-row size=12 class="center2 margin-top">
-      <ion-avatar item-start class="imgProfile">
-        <img [src]=data.image>
-      </ion-avatar>
-    </ion-row>
 
-    <ion-row class="center2">
-      <h6>{{data.nametitle}}{{data.firstname}} {{data.lastname}}</h6>
-    </ion-row>
+  <ion-row size=12 class="center2 margin-top">
+    <ion-avatar item-start class="imgProfile">
+      <img [src]=data.image>
+    </ion-avatar>
+  </ion-row>
+
+  <ion-row class="center2">
+    <p class="font-name">{{data.nametitle}}{{data.firstname}} {{data.lastname}}</p>
+  </ion-row>
 
 
 </ion-content>
@@ -39,24 +33,26 @@
 <ion-footer>
   <ion-toolbar text-center>
     <ion-row>
-      <ion-col size=6>
+      <ion-col size=6 class="col-height">
         <ion-row (click)="score()">
           <ion-col size=12>
-            <ion-icon name="bookmarks" class="icon" ></ion-icon>
+            <ion-icon name="bookmarks" class="icon"></ion-icon>
           </ion-col>
           <ion-col size=12>
-            ผลการเรียน
+            <p class="font-size" style="margin: 0px">ผลการเรียน</p>
+
           </ion-col>
         </ion-row>
       </ion-col>
 
-      <ion-col size=6>
+      <ion-col size=6 class="col-height">
         <ion-row (click)="evo()">
           <ion-col size=12>
             <ion-icon name="trending-up" class="icon"></ion-icon>
           </ion-col>
           <ion-col size=12>
-            พัฒนาการ
+            <p class="font-size" style="margin: 0px">พัฒนาการ</p>
+
           </ion-col>
         </ion-row>
       </ion-col>
@@ -67,24 +63,26 @@
 <ion-footer>
   <ion-toolbar text-center>
     <ion-row>
-      <ion-col size=6>
+      <ion-col size=6 class="col-height">
         <ion-row>
-          <ion-col size=12  (click)="goProtfolio()">
+          <ion-col size=12 (click)="goProtfolio()">
             <ion-icon name="filing" class="icon"></ion-icon>
           </ion-col>
           <ion-col size=12>
-            ผลงาน
+            <p class="font-size" style="margin: 0px">ผลงาน</p>
+
           </ion-col>
         </ion-row>
       </ion-col>
 
-      <ion-col size=6>
+      <ion-col size=6 class="col-height">
         <ion-row (click)="profilesave()">
           <ion-col size=12>
             <ion-icon name="body" class="icon"></ion-icon>
           </ion-col>
-          <ion-col size=12 >
-            น้ำหนัก-ส่วนสูง
+          <ion-col size=12>
+            <p class="font-size" style="margin: 0px"> น้ำหนัก-ส่วนสูง</p>
+
           </ion-col>
         </ion-row>
       </ion-col>
