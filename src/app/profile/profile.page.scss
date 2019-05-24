@@ -37,9 +37,17 @@
 .font-name {
     font-size: 3.3vh;
 }
+
 .col-height {
     height: 13vh;
 }
-.font-size{
+
+.font-size {
     font-size: 3vh;
+}
+
+.scroll-y {
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    overflow-y: none;
 }
