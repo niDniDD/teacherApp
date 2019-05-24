@@ -75,5 +75,7 @@ export class ScorePage implements OnInit {
     console.log(this.datascore);
   }
   
+  
+
 }
 
