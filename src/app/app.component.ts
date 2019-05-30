@@ -32,7 +32,7 @@ export class AppComponent {
       if(!window.localStorage.getItem('@token')){
         this.route.navigateForward("/signin")
       }
-      this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString('#ffffff');
       this.splashScreen.hide();
     });
   }
